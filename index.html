@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sicilia — Mai 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra:       #C4622D;
+    --terra-dark:  #8B3E18;
+    --gold:        #D4A853;
+    --gold-light:  #E8C97A;
+    --cream:       #F7F0E3;
+    --parchment:   #EDE3CC;
+    --dark:        #2B1F14;
+    --text:        #3D2B1A;
+    --olive:       #5C6B3A;
+    --sea:         #3A6B7A;
+    --dust:        #9B8B75;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 3rem 2rem;
+    overflow: hidden;
+  }
+
+  /* Grain texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Radial light */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,98,45,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(212,168,83,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 30% at 10% 60%, rgba(58,107,122,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 14vw, 9rem);
+    font-weight: 300;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title em {
+    display: block;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.6em;
+    line-height: 1.1;
+    margin-top: 0.3em;
+  }
+
+  .hero-subtitle {
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    opacity: 0.45;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    text-align: center;
+  }
+  .meta-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--gold-light);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.3;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1.2s 0.6s ease both;
+  }
+  .scroll-hint svg {
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  /* ── NAV SECTION ── */
+  .nav-section {
+    background: var(--cream);
+    color: var(--text);
+    padding: 4rem 2rem 5rem;
+  }
+
+  .nav-intro {
+    max-width: 960px;
+    margin: 0 auto 3rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .nav-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.5;
+    font-style: italic;
+  }
+  .nav-intro p {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+    text-transform: uppercase;
+  }
+
+  /* ── GRID DE CARTES ── */
+  .cards-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .page-card {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 1.8rem 1.8rem 1.6rem;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow:
+      0 1px 3px rgba(43,31,20,0.06),
+      0 0 0 1px rgba(43,31,20,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow: hidden;
+  }
+
+  .page-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-color, var(--terra));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .page-card:hover {
+    box-shadow: 0 8px 32px rgba(43,31,20,0.12);
+    transform: translateY(-3px);
+  }
+  .page-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Couleurs par carte */
+  .card-c1 { --card-color: var(--terra); }
+  .card-c2 { --card-color: var(--olive); }
+  .card-c3 { --card-color: var(--gold); }
+  .card-c4 { --card-color: var(--sea); }
+  .card-c5 { --card-color: var(--terra-dark); }
+  .card-c6 { --card-color: var(--dust); }
+
+  .card-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .card-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--dark);
+  }
+
+  .card-desc {
+    font-size: 0.78rem;
+    opacity: 0.55;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-arrow {
+    font-size: 0.75rem;
+    opacity: 0.25;
+    letter-spacing: 0.1em;
+    margin-top: 0.4rem;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .page-card:hover .card-arrow {
+    opacity: 0.6;
+    transform: translateX(3px);
+  }
+
+  /* Carte "à venir" */
+  .page-card.soon {
+    background: var(--parchment);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .soon-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(43,31,20,0.08);
+    color: var(--text);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    text-align: center;
+    padding: 1.8rem 2rem;
+    font-size: 0.7rem;
+    opacity: 0.25;
+    letter-spacing: 0.1em;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  @media (max-width: 500px) {
+    .hero-meta { gap: 1.2rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Voyage · Côte Est · Quatre voyageurs</p>
+    <h1 class="hero-title">
+      Sicilia
+      <em>Mai 2025</em>
+    </h1>
+    <p class="hero-subtitle">Taormina · Etna · Catania · Siracusa · Val di Noto</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Durée</span>
+        <span class="meta-value">5 jours</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Voyageurs</span>
+        <span class="meta-value">4 personnes</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Base</span>
+        <span class="meta-value">Côte Est</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Explorer</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── NAVIGATION ── -->
+<section class="nav-section">
+  <div class="nav-intro">
+    <h2>Tout ce qu'il faut pour le voyage</h2>
+    <p>Guide collaboratif du groupe</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <a href="planning.html" class="page-card card-c1">
+      <span class="card-icon">🗓</span>
+      <span class="card-label">Jour par jour</span>
+      <h3 class="card-title">Planning</h3>
+      <p class="card-desc">Itinéraire détaillé, logements, transferts, et timing par étape. La colonne vertébrale du voyage.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="guide-linguistique.html" class="page-card card-c2">
+      <span class="card-icon">🫒</span>
+      <span class="card-label">Langue</span>
+      <h3 class="card-title">Guide linguistique</h3>
+      <p class="card-desc">Survie en trois tons : le minimum vital, les phrases qui font plaisir aux locaux, et le dictionnaire de la réponse réelle.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="villes.html" class="page-card card-c3">
+      <span class="card-icon">🏛</span>
+      <span class="card-label">Par destination</span>
+      <h3 class="card-title">Guide par ville</h3>
+      <p class="card-desc">Taormina, Etna, Catania, Siracusa, Val di Noto — culture, restaurants, activités, spots photographiques.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="conseils.html" class="page-card card-c4">
+      <span class="card-icon">☀️</span>
+      <span class="card-label">Pratique</span>
+      <h3 class="card-title">Conseils Sicile</h3>
+      <p class="card-desc">Ce qu'on ne trouve pas dans les guides : rythmes locaux, chaleur, conduite, paiements, codes sociaux.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="idees.html" class="page-card card-c5">
+      <span class="card-icon">💡</span>
+      <span class="card-label">À trier</span>
+      <h3 class="card-title">Idées brutes</h3>
+      <p class="card-desc">Le carnet de bord collectif — suggestions non filtrées, pistes à creuser, envies du groupe à arbitrer.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="liens.html" class="page-card card-c6">
+      <span class="card-icon">🔗</span>
+      <span class="card-label">Ressources</span>
+      <h3 class="card-title">Liens utiles</h3>
+      <p class="card-desc">Réservations, cartes, météo Etna, offices de tourisme, applications recommandées, sources fiables.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  Sicilia · Maggio 2025 · Quattro viaggiatori
+</footer>
+
+</body>
+</html>
