@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sicilia — Mai 2025</title>
+<title>Sicilia — Mai 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +22,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -46,7 +45,6 @@
     overflow: hidden;
   }
 
-  /* Grain texture */
   .hero::before {
     content: '';
     position: absolute;
@@ -56,7 +54,6 @@
     pointer-events: none;
   }
 
-  /* Radial light */
   .hero::after {
     content: '';
     position: absolute;
@@ -124,9 +121,7 @@
     margin-top: 2.5rem;
     flex-wrap: wrap;
   }
-  .meta-item {
-    text-align: center;
-  }
+  .meta-item { text-align: center; }
   .meta-label {
     font-size: 0.6rem;
     letter-spacing: 0.25em;
@@ -157,12 +152,10 @@
     text-transform: uppercase;
     animation: fadeUp 1.2s 0.6s ease both;
   }
-  .scroll-hint svg {
-    animation: bounce 2s infinite;
-  }
+  .scroll-hint svg { animation: bounce 2s infinite; }
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
+    50%       { transform: translateY(5px); }
   }
 
   /* ── NAV SECTION ── */
@@ -197,6 +190,21 @@
     text-transform: uppercase;
   }
 
+  /* ── SECTION LABELS ── */
+  .section-label {
+    max-width: 960px;
+    margin: 0 auto 1rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    color: var(--text);
+  }
+  .section-label + .cards-grid {
+    margin-bottom: 2.5rem;
+  }
+
   /* ── GRID DE CARTES ── */
   .cards-grid {
     max-width: 960px;
@@ -204,6 +212,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.2rem;
+  }
+
+  /* Grid pour les jours : toujours 5 colonnes max, plus compactes */
+  .cards-grid--days {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   }
 
   .page-card {
@@ -238,17 +251,22 @@
     box-shadow: 0 8px 32px rgba(43,31,20,0.12);
     transform: translateY(-3px);
   }
-  .page-card:hover::before {
-    transform: scaleX(1);
-  }
+  .page-card:hover::before { transform: scaleX(1); }
 
-  /* Couleurs par carte */
-  .card-c1 { --card-color: var(--terra); }
-  .card-c2 { --card-color: var(--olive); }
-  .card-c3 { --card-color: var(--gold); }
-  .card-c4 { --card-color: var(--sea); }
-  .card-c5 { --card-color: var(--terra-dark); }
-  .card-c6 { --card-color: var(--dust); }
+  /* Couleurs */
+  .card-terra      { --card-color: var(--terra); }
+  .card-olive      { --card-color: var(--olive); }
+  .card-gold       { --card-color: var(--gold); }
+  .card-sea        { --card-color: var(--sea); }
+  .card-terra-dark { --card-color: var(--terra-dark); }
+  .card-dust       { --card-color: var(--dust); }
+
+  /* Couleurs des jours en dégradé */
+  .card-j1 { --card-color: #3A6B7A; }
+  .card-j2 { --card-color: #5C6B3A; }
+  .card-j3 { --card-color: #C4622D; }
+  .card-j4 { --card-color: #8B3E18; }
+  .card-j5 { --card-color: #D4A853; }
 
   .card-icon {
     font-size: 1.6rem;
@@ -271,11 +289,20 @@
     color: var(--dark);
   }
 
+  /* Titres plus petits pour les cartes de jour */
+  .cards-grid--days .card-title {
+    font-size: 1.2rem;
+  }
+
   .card-desc {
     font-size: 0.78rem;
     opacity: 0.55;
     line-height: 1.65;
     flex: 1;
+  }
+
+  .cards-grid--days .card-desc {
+    font-size: 0.72rem;
   }
 
   .card-arrow {
@@ -288,25 +315,6 @@
   .page-card:hover .card-arrow {
     opacity: 0.6;
     transform: translateX(3px);
-  }
-
-  /* Carte "à venir" */
-  .page-card.soon {
-    background: var(--parchment);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-  .soon-badge {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    font-size: 0.55rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    background: rgba(43,31,20,0.08);
-    color: var(--text);
-    padding: 0.2rem 0.5rem;
-    border-radius: 2px;
   }
 
   /* ── FOOTER ── */
@@ -324,6 +332,7 @@
   @media (max-width: 500px) {
     .hero-meta { gap: 1.2rem; }
     .cards-grid { grid-template-columns: 1fr; }
+    .cards-grid--days { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -335,9 +344,9 @@
     <p class="hero-eyebrow">Voyage · Côte Est · Quatre voyageurs</p>
     <h1 class="hero-title">
       Sicilia
-      <em>Mai 2025</em>
+      <em>Mai 2026</em>
     </h1>
-    <p class="hero-subtitle">Taormina · Etna · Catania · Siracusa · Val di Noto</p>
+    <p class="hero-subtitle">Aci Trezza · Siracusa · Etna · Noto · Taormina</p>
     <div class="hero-meta">
       <div class="meta-item">
         <span class="meta-label">Durée</span>
@@ -349,7 +358,7 @@
       </div>
       <div class="meta-item">
         <span class="meta-label">Base</span>
-        <span class="meta-value">Côte Est</span>
+        <span class="meta-value">Flancs de l'Etna</span>
       </div>
     </div>
   </div>
@@ -368,17 +377,19 @@
     <p>Guide collaboratif du groupe</p>
   </div>
 
-  <div class="cards-grid">
+  <!-- Ressources générales -->
+  <p class="section-label">Ressources générales</p>
+  <div class="cards-grid" style="margin-bottom: 2.5rem;">
 
-    <a href="planning.html" class="page-card card-c1">
+    <a href="planning-sicile-2026.html" class="page-card card-terra">
       <span class="card-icon">🗓</span>
-      <span class="card-label">Jour par jour</span>
+      <span class="card-label">Vue d'ensemble</span>
       <h3 class="card-title">Planning</h3>
-      <p class="card-desc">Itinéraire détaillé, logements, transferts, et timing par étape. La colonne vertébrale du voyage.</p>
+      <p class="card-desc">Itinéraire détaillé, logements, transferts et timing par étape. La colonne vertébrale du voyage.</p>
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
-    <a href="guide-linguistique.html" class="page-card card-c2">
+    <a href="guide-linguistique.html" class="page-card card-olive">
       <span class="card-icon">🫒</span>
       <span class="card-label">Langue</span>
       <h3 class="card-title">Guide linguistique</h3>
@@ -386,35 +397,57 @@
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
-    <a href="villes.html" class="page-card card-c3">
+    <a href="manques-sicile-2026.html" class="page-card card-dust">
+      <span class="card-icon">📋</span>
+      <span class="card-label">À creuser</span>
+      <h3 class="card-title">Ce qu'on n'a pas fait</h3>
+      <p class="card-desc">Les pistes non arbitrées, les envies restées en suspens, les manques à combler si le voyage se prolonge.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+  </div>
+
+  <!-- Journées -->
+  <p class="section-label">Journées</p>
+  <div class="cards-grid cards-grid--days">
+
+    <a href="jour1-aci-trezza.html" class="page-card card-j1">
+      <span class="card-icon">🐟</span>
+      <span class="card-label">Jour 1 · 18 mai</span>
+      <h3 class="card-title">Aci Trezza</h3>
+      <p class="card-desc">Arrivée, village de pêcheurs, Faraglioni.</p>
+      <span class="card-arrow">Ouvrir →</span>
+    </a>
+
+    <a href="jour2-syracuse-ortigia.html" class="page-card card-j2">
       <span class="card-icon">🏛</span>
-      <span class="card-label">Par destination</span>
-      <h3 class="card-title">Guide par ville</h3>
-      <p class="card-desc">Taormina, Etna, Catania, Siracusa, Val di Noto — culture, restaurants, activités, spots photographiques.</p>
+      <span class="card-label">Jour 2 · 19 mai</span>
+      <h3 class="card-title">Syracuse & Ortigia</h3>
+      <p class="card-desc">Île baroque, Duomo, Fontaine d'Aréthuse.</p>
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
-    <a href="conseils.html" class="page-card card-c4">
-      <span class="card-icon">☀️</span>
-      <span class="card-label">Pratique</span>
-      <h3 class="card-title">Conseils Sicile</h3>
-      <p class="card-desc">Ce qu'on ne trouve pas dans les guides : rythmes locaux, chaleur, conduite, paiements, codes sociaux.</p>
+    <a href="jour3-etna-zafferana.html" class="page-card card-j3">
+      <span class="card-icon">🌋</span>
+      <span class="card-label">Jour 3 · 20 mai</span>
+      <h3 class="card-title">Etna & Zafferana</h3>
+      <p class="card-desc">Ascension, coulées, village au pied du volcan.</p>
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
-    <a href="idees.html" class="page-card card-c5">
-      <span class="card-icon">💡</span>
-      <span class="card-label">À trier</span>
-      <h3 class="card-title">Idées brutes</h3>
-      <p class="card-desc">Le carnet de bord collectif — suggestions non filtrées, pistes à creuser, envies du groupe à arbitrer.</p>
+    <a href="jour4-noto-vendicari.html" class="page-card card-j4">
+      <span class="card-icon">🦩</span>
+      <span class="card-label">Jour 4 · 21 mai</span>
+      <h3 class="card-title">Noto & Vendicari</h3>
+      <p class="card-desc">Noto baroque, réserve naturelle, flamants.</p>
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
-    <a href="liens.html" class="page-card card-c6">
-      <span class="card-icon">🔗</span>
-      <span class="card-label">Ressources</span>
-      <h3 class="card-title">Liens utiles</h3>
-      <p class="card-desc">Réservations, cartes, météo Etna, offices de tourisme, applications recommandées, sources fiables.</p>
+    <a href="jour5-taormina-isola-bella.html" class="page-card card-j5">
+      <span class="card-icon">🌊</span>
+      <span class="card-label">Jour 5 · 22 mai</span>
+      <h3 class="card-title">Taormina & Isola Bella</h3>
+      <p class="card-desc">Teatro Greco, panorama, perle de la côte.</p>
       <span class="card-arrow">Ouvrir →</span>
     </a>
 
@@ -422,7 +455,7 @@
 </section>
 
 <footer>
-  Sicilia · Maggio 2025 · Quattro viaggiatori
+  Sicilia · Maggio 2026 · Quattro viaggiatori
 </footer>
 
 </body>
