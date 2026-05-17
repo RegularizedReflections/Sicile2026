@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning · Sicile 2026 · Vue d'ensemble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C4622D;
+    --terra-dark: #8B3E18;
+    --gold: #D4A853;
+    --cream: #F7F0E3;
+    --parchment: #EDE3CC;
+    --dark: #2B1F14;
+    --olive: #5C6B3A;
+    --sea: #3A6B7A;
+    --sea-dark: #2A4E59;
+    --text: #3D2B1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 3rem 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 12% 0%,   rgba(58,107,122,0.38) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 110%, rgba(212,168,83,0.20)  0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%,  rgba(196,98,45,0.08)   0%, transparent 70%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 7vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    margin-bottom: 0.5rem;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 1.4rem;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    opacity: 0.65;
+  }
+  .meta-pill .label { opacity: 0.55; }
+
+  /* ── BRIEF STRIP ── */
+  .brief-strip {
+    background: var(--terra);
+    color: white;
+    padding: 1.1rem 1.75rem;
+  }
+  .brief-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+  .brief-inner strong { font-weight: 500; }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.38;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-a:hover { opacity: 0.65; }
+  .nav-a.active { opacity: 1; border-bottom-color: var(--terra); color: var(--terra-dark); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding-top: 3.75rem;
+    scroll-margin-top: 46px;
+  }
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--parchment);
+    margin-bottom: 1.75rem;
+  }
+  .sec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--terra);
+    opacity: 0.22;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.12;
+  }
+  .sec-title em { font-style: italic; color: var(--terra); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tag-must  { background: rgba(196,98,45,0.11); color: var(--terra-dark); border: 1px solid rgba(196,98,45,0.2); }
+  .tag-good  { background: rgba(92,107,58,0.1);  color: var(--olive);      border: 1px solid rgba(92,107,58,0.2); }
+  .tag-sea   { background: rgba(58,107,122,0.09); color: var(--sea);        border: 1px solid rgba(58,107,122,0.2); }
+  .tag-gold  { background: rgba(212,168,83,0.12); color: #7A5A10;           border: 1px solid rgba(212,168,83,0.3); }
+  .tag-warn  { background: rgba(107,58,31,0.09);  color: #6B3A1F;           border: 1px solid rgba(107,58,31,0.2); }
+
+  /* ── DAY CARDS (planning overview) ── */
+  .day-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .day-card:hover {
+    box-shadow: 0 4px 14px rgba(43,31,20,0.10);
+    transform: translateY(-1px);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  .day-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark);
+    color: var(--cream);
+    min-width: 62px;
+    padding: 1.1rem 0.75rem;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-num::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+  }
+  .day-card:nth-child(1) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(196,98,45,0.5), transparent 70%); }
+  .day-card:nth-child(2) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(58,107,122,0.6), transparent 70%); }
+  .day-card:nth-child(3) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(196,98,45,0.4), transparent 70%); }
+  .day-card:nth-child(4) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(92,107,58,0.5), transparent 70%); }
+  .day-card:nth-child(5) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(212,168,83,0.5), transparent 70%); }
+  .day-card:nth-child(6) .day-num::before { background: radial-gradient(circle at 50% 0%, rgba(43,31,20,0.3), transparent 70%); }
+
+  .dn-label {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    position: relative;
+    z-index: 1;
+  }
+  .dn-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .day-info {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .day-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.15;
+  }
+  .day-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+  .day-date {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    white-space: nowrap;
+    padding-top: 0.2rem;
+  }
+
+  .day-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1rem;
+    margin-top: 0.1rem;
+  }
+  .day-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    opacity: 0.6;
+  }
+
+  .day-steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(43,31,20,0.06);
+  }
+  .day-step {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    opacity: 0.65;
+  }
+  .day-step::after {
+    content: '›';
+    margin: 0 0.3rem;
+    opacity: 0.3;
+    font-size: 0.85rem;
+  }
+  .day-step:last-child::after { display: none; }
+  .ds-time {
+    font-weight: 500;
+    background: var(--parchment);
+    padding: 0.08rem 0.35rem;
+    border-radius: 2px;
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+  }
+
+  .day-link {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--parchment);
+    border-top: 1px solid rgba(43,31,20,0.06);
+    text-decoration: none;
+    color: var(--terra-dark);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .day-link:hover { background: #e5d9c0; }
+  .day-link-arrow { opacity: 0.5; margin-left: auto; }
+
+  /* weather badge */
+  .wx {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.73rem;
+    font-weight: 400;
+  }
+  .wx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.69rem;
+    font-weight: 400;
+  }
+  .wx-sun    { background: rgba(212,168,83,0.18); color: #7A5A10; border: 1px solid rgba(212,168,83,0.35); }
+  .wx-wind   { background: rgba(107,58,31,0.09);  color: #6B3A1F; border: 1px solid rgba(107,58,31,0.2); }
+  .wx-volcan { background: rgba(196,98,45,0.11); color: var(--terra-dark); border: 1px solid rgba(196,98,45,0.22); }
+  .wx-best   { background: rgba(92,107,58,0.1);  color: var(--olive);  border: 1px solid rgba(92,107,58,0.25); }
+  .wx-grey   { background: rgba(43,31,20,0.07);  color: var(--text);   border: 1px solid rgba(43,31,20,0.12); }
+
+  /* ── METEO RECAP TABLE ── */
+  .meteo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .meteo-table thead tr {
+    border-bottom: 1px solid var(--parchment);
+  }
+  .meteo-table th {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+  }
+  .meteo-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(43,31,20,0.05);
+  }
+  .meteo-table tr:last-child td { border-bottom: none; }
+  .meteo-table tr:hover td { background: rgba(237,227,204,0.4); }
+  .mt-day {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--dark);
+  }
+  .mt-day span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+  .mt-temp { font-weight: 500; white-space: nowrap; }
+  .mt-cond { opacity: 0.75; line-height: 1.5; }
+  .mt-note { font-size: 0.72rem; opacity: 0.55; font-style: italic; line-height: 1.45; }
+
+  /* ── RESERVATIONS ── */
+  .resv-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .resv-item {
+    background: white;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem 1rem;
+    align-items: start;
+  }
+  .resv-urgency {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .resv-urgency.urgent { background: rgba(196,98,45,0.12); }
+  .resv-urgency.soon   { background: rgba(212,168,83,0.15); }
+  .resv-urgency.flex   { background: rgba(92,107,58,0.09); }
+  .resv-u-label {
+    font-size: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    line-height: 1;
+    margin-top: 2px;
+    text-align: center;
+  }
+  .resv-urgency.urgent .resv-u-label { color: var(--terra-dark); }
+  .resv-urgency.soon .resv-u-label   { color: #7A5A10; }
+  .resv-urgency.flex .resv-u-label   { color: var(--olive); }
+  .resv-u-ico { font-size: 1.25rem; line-height: 1; }
+
+  .resv-name {
+    grid-column: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .resv-tag-col {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .resv-body {
+    grid-column: 2 / 4;
+    font-size: 0.8rem;
+    opacity: 0.72;
+    line-height: 1.65;
+  }
+  .resv-body strong { font-weight: 500; opacity: 1; }
+  .resv-when {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.45rem;
+    font-size: 0.7rem;
+    opacity: 0.55;
+    font-style: italic;
+  }
+  .resv-when::before { content: '→'; opacity: 0.4; }
+
+  /* ── COURSES / REPAS ── */
+  .repas-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .repas-block {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+  }
+  .repas-hd {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1.25rem;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.07);
+  }
+  .repas-ico { font-size: 1.1rem; }
+  .repas-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.7;
+  }
+  .repas-body { padding: 1.1rem 1.25rem; }
+
+  .repas-day-row {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(43,31,20,0.05);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+  .repas-day-row:last-child { border-bottom: none; }
+  .rpd-jour {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--terra);
+    white-space: nowrap;
+    min-width: 36px;
+    line-height: 1.5;
+  }
+  .rpd-content { flex: 1; opacity: 0.8; }
+  .rpd-content strong { font-weight: 500; color: var(--dark); opacity: 1; }
+
+  .courses-section { padding-top: 1rem; }
+  .courses-intro {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .courses-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 520px) {
+    .courses-cols { grid-template-columns: 1fr; }
+    .resv-item { grid-template-columns: auto 1fr; }
+    .resv-tag-col { grid-column: 2; }
+    .resv-body { grid-column: 2 / 3; }
+  }
+  .courses-col {}
+  .courses-col-title {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .courses-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .courses-list li {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    line-height: 1.5;
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+  }
+  .courses-list li::before {
+    content: '—';
+    opacity: 0.3;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+  }
+  .courses-list li strong {
+    font-weight: 500;
+    color: var(--dark);
+    opacity: 1;
+  }
+  .courses-warn {
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.1rem;
+    background: rgba(196,98,45,0.07);
+    border-left: 2px solid var(--terra);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    opacity: 0.85;
+  }
+  .courses-warn strong { font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.72rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  footer em { font-style: italic; }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    .main { padding: 0 1.1rem 4rem; }
+    .meteo-table th:nth-child(3), .meteo-table td:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <span class="eyebrow">Sicile 2026 · 18–23 mai · Vue d'ensemble</span>
+    <h1>Planning<br><em>du séjour</em></h1>
+    <div class="header-meta">
+      <div class="meta-pill">🗓️ <span class="label">Durée ·</span> 6 jours / 5 nuits</div>
+      <div class="meta-pill">🏠 <span class="label">Base ·</span> Airbnb Santa Venerina, Via Etna 90</div>
+      <div class="meta-pill">🚗 <span class="label">Voiture ·</span> Centauro · Catane CTA</div>
+      <div class="meta-pill">👥 <span class="label">Groupe ·</span> 4 personnes</div>
+    </div>
+  </div>
+</header>
+
+<div class="brief-strip">
+  <div class="brief-inner">
+    <strong>Document de référence du séjour.</strong> Vue d'ensemble des 6 jours depuis la base de Santa Venerina sur les pentes de l'Etna. Liens vers les pages détaillées, météo récapitulative, réservations à anticiper, et liste de courses pour les repas à l'Airbnb.
+  </div>
+</div>
+
+<!-- ── STICKY NAV ── -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a class="nav-a active" href="#jours">📅 Jours</a>
+    <a class="nav-a" href="#meteo">🌤️ Météo</a>
+    <a class="nav-a" href="#reservations">📋 Réservations</a>
+    <a class="nav-a" href="#courses">🛒 Courses</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════════
+       01 — LES JOURS
+  ══════════════════════════════════════ -->
+  <section id="jours">
+    <div class="section-hd">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Les <em>six jours</em></h2>
+    </div>
+
+    <div class="day-list">
+
+      <!-- J1 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">1</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Aci Trezza · <em>Arrivée</em></p>
+              <span class="day-date">Lun 18 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-sun">☀️ 24°C · Grand soleil</span>
+              <span class="day-meta">🕙 Atterrissage 10h30 CTA</span>
+              <span class="day-meta">🍽️ Dîner maison</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step"><span class="ds-time">12h</span> Aci Trezza · Faraglioni</span>
+              <span class="day-step"><span class="ds-time">13h30</span> Déjeuner Lungomare</span>
+              <span class="day-step"><span class="ds-time">15h30</span> Courses</span>
+              <span class="day-step"><span class="ds-time">16h30</span> Granita Russo</span>
+              <span class="day-step"><span class="ds-time">17h</span> Airbnb</span>
+            </div>
+          </div>
+        </div>
+        <a class="day-link" href="jour1-aci-trezza.html">
+          ↗ Ouvrir la page détaillée · Jour 1 — Aci Trezza
+          <span class="day-link-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- J2 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">2</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Syracuse · <em>Ortigia</em></p>
+              <span class="day-date">Mar 19 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-wind">🌬️ 21–23°C · Vent sensible ⚠️</span>
+              <span class="day-meta">🕗 Départ 8h00–8h30</span>
+              <span class="day-meta">🍽️ Dîner restaurant</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step"><span class="ds-time">10h15</span> Neapolis</span>
+              <span class="day-step"><span class="ds-time">13h</span> Déjeuner Ortigia</span>
+              <span class="day-step"><span class="ds-time">14h30</span> Ortigia libre</span>
+              <span class="day-step"><span class="ds-time">19h30</span> Coucher de soleil</span>
+              <span class="day-step"><span class="ds-time">20h30</span> Dîner</span>
+            </div>
+          </div>
+        </div>
+        <a class="day-link" href="jour2-syracuse-ortigia.html">
+          ↗ Ouvrir la page détaillée · Jour 2 — Syracuse · Ortigia
+          <span class="day-link-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- J3 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">3</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Etna · <em>Zafferana</em></p>
+              <span class="day-date">Mer 20 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-volcan">🌋 26°C côte · 11–13°C sommet</span>
+              <span class="day-meta">🕗 Départ 8h00–8h30</span>
+              <span class="day-meta">🍽️ Dîner maison</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step"><span class="ds-time">9h45</span> Rifugio Sapienza · café</span>
+              <span class="day-step"><span class="ds-time">10h15</span> Crateri Silvestri</span>
+              <span class="day-step"><span class="ds-time">12h30</span> Zafferana · déjeuner</span>
+              <span class="day-step"><span class="ds-time">15h</span> Retour Airbnb · V60</span>
+            </div>
+          </div>
+        </div>
+        <a class="day-link" href="jour3-etna-zafferana.html">
+          ↗ Ouvrir la page détaillée · Jour 3 — Etna · Zafferana
+          <span class="day-link-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- J4 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">4</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Noto · <em>Vendicari</em></p>
+              <span class="day-date">Jeu 21 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-sun">☀️ 24–25°C · Zone sud protégée</span>
+              <span class="day-meta">🕗 Départ 7h30–8h00 — le plus tôt</span>
+              <span class="day-meta">🍽️ Dîner maison ~19h30</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step"><span class="ds-time">10h</span> Noto baroque</span>
+              <span class="day-step"><span class="ds-time">11h30</span> Caffè Sicilia</span>
+              <span class="day-step"><span class="ds-time">12h30</span> Manna · déjeuner</span>
+              <span class="day-step"><span class="ds-time">14h</span> Vendicari</span>
+              <span class="day-step"><span class="ds-time">16h</span> Calamosche</span>
+            </div>
+          </div>
+        </div>
+        <a class="day-link" href="jour4-noto-vendicari.html">
+          ↗ Ouvrir la page détaillée · Jour 4 — Noto · Vendicari
+          <span class="day-link-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- J5 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">5</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Taormina · <em>Isola Bella</em></p>
+              <span class="day-date">Ven 22 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-best">✨ 22–24°C · Meilleure journée</span>
+              <span class="day-meta">🕗 Départ 7h45–8h15</span>
+              <span class="day-meta">🍽️ Dîner OstRossoDiVino ou maison</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step"><span class="ds-time">9h30</span> Théâtre grec</span>
+              <span class="day-step"><span class="ds-time">11h</span> BamBar · granita</span>
+              <span class="day-step"><span class="ds-time">12h30</span> Da Nino · déjeuner</span>
+              <span class="day-step"><span class="ds-time">14h30</span> Corso Umberto</span>
+              <span class="day-step"><span class="ds-time">15h30</span> Isola Bella</span>
+            </div>
+          </div>
+        </div>
+        <a class="day-link" href="jour5-taormina-isola-bella.html">
+          ↗ Ouvrir la page détaillée · Jour 5 — Taormina · Isola Bella
+          <span class="day-link-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- J6 -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">
+            <span class="dn-label">J</span>
+            <span class="dn-n">6</span>
+          </div>
+          <div class="day-info">
+            <div class="day-title-row">
+              <p class="day-title">Départ · <em>Retour</em></p>
+              <span class="day-date">Sam 23 mai</span>
+            </div>
+            <div class="day-meta-row">
+              <span class="wx-badge wx-grey">🌤️ À vérifier</span>
+              <span class="day-meta">🚗 Rendu voiture Centauro CTA</span>
+            </div>
+            <div class="day-steps">
+              <span class="day-step">Valises — préparer la veille</span>
+              <span class="day-step">Dernier café Russo si temps</span>
+              <span class="day-step">Rendu Centauro · photos état voiture</span>
+              <span class="day-step">Aéroport CTA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       02 — MÉTÉO PAR JOUR
+  ══════════════════════════════════════ -->
+  <section id="meteo">
+    <div class="section-hd">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Météo par <em>jour</em></h2>
+    </div>
+
+    <table class="meteo-table">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Conditions</th>
+          <th>Note clé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Lun 18 mai</span>Aci Trezza</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-sun">☀️ 24°C · Grand soleil</span>
+          </td>
+          <td>
+            <p class="mt-note">Crème solaire dès l'aéroport. Lumière Faraglioni idéale 12h–13h30.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Mar 19 mai</span>Syracuse</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-wind">🌬️ 21–23°C · Vent ⚠️</span>
+          </td>
+          <td>
+            <p class="mt-note">Vigilance jaune vent côte est. Ortigia protégée — bon choix. Pas de baignade. Éviter Taormina et l'Etna ce jour-là.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Mer 20 mai</span>Etna</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-volcan">🌋 26°C côte / 11–13°C sommet</span>
+          </td>
+          <td>
+            <p class="mt-note">Vérifier webcam Rifugio Sapienza la veille et le matin. Équipement froid obligatoire. Différentiel thermique de 15°C.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Jeu 21 mai</span>Noto · Vendicari</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-sun">☀️ 24–25°C · Très ensoleillé</span>
+          </td>
+          <td>
+            <p class="mt-note">Zone la plus ensoleillée de Méditerranée en mai. Sentier Vendicari sans ombre — 2L/personne. Calamosche possible si mer calme.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Ven 22 mai</span>Taormina</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-best">✨ 22–24°C · Meilleure journée</span>
+          </td>
+          <td>
+            <p class="mt-note">Mer calme · Snorkeling Isola Bella optimal. C'est le jour pour le théâtre et la baignade.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="mt-day"><span>Sam 23 mai</span>Départ</p>
+          </td>
+          <td>
+            <span class="wx-badge wx-grey">🌤️ —</span>
+          </td>
+          <td>
+            <p class="mt-note">Journée de départ — météo secondaire.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       03 — RÉSERVATIONS
+  ══════════════════════════════════════ -->
+  <section id="reservations">
+    <div class="section-hd">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Réservations à <em>anticiper</em></h2>
+    </div>
+
+    <div class="resv-list">
+
+      <!-- OstRossoDiVino — dès J1 -->
+      <div class="resv-item">
+        <div class="resv-urgency urgent">
+          <span class="resv-u-ico">🔴</span>
+          <span class="resv-u-label">Urgent</span>
+        </div>
+        <p class="resv-name">OstRossoDiVino · Taormina</p>
+        <div class="resv-tag-col"><span class="tag tag-must">J5 · Dîner</span></div>
+        <div class="resv-body">
+          Vico De Spuches 8, Taormina. Vins Etna au verre — Nerello Mascalese, Carricante, petits producteurs. Concerts certains vendredis. La conclusion idéale du séjour. <strong>Ne pas attendre</strong> — à réserver depuis J1 ou J2 au plus tard. Le vendredi soir se remplit vite.
+          <p class="resv-when">Réserver depuis J1 (lundi) · Pour le vendredi 22 mai ~20h</p>
+        </div>
+      </div>
+
+      <!-- Manna Noto — dès J1 ou J2 -->
+      <div class="resv-item">
+        <div class="resv-urgency urgent">
+          <span class="resv-u-ico">🔴</span>
+          <span class="resv-u-label">Urgent</span>
+        </div>
+        <p class="resv-name">Ristorante Manna · Noto</p>
+        <div class="resv-tag-col"><span class="tag tag-must">J4 · Déjeuner</span></div>
+        <div class="resv-body">
+          Cuisine sicilienne sincère, produits locaux, menu court de saison — l'antithèse du restaurant-piège du Corso. <strong>Ne pas réserver la veille de J4</strong> (le mercredi soir de retour de l'Etna = trop tard, trop fatigués). Créneau idéal : J2 depuis Syracuse. Déjeuner cible 12h30, départ Vendicari à 14h.
+          <p class="resv-when">Réserver depuis J1 ou J2 · Pour le jeudi 21 mai 12h30</p>
+        </div>
+      </div>
+
+      <!-- Restaurant dîner Ortigia — J1 -->
+      <div class="resv-item">
+        <div class="resv-urgency urgent">
+          <span class="resv-u-ico">🔴</span>
+          <span class="resv-u-label">Urgent</span>
+        </div>
+        <p class="resv-name">Restaurant dîner · Ortigia</p>
+        <div class="resv-tag-col"><span class="tag tag-sea">J2 · Dîner</span></div>
+        <div class="resv-body">
+          Fruits de mer, linguine all'inchiostro di seppia, produits de la pêche locale. Séquence idéale : coucher de soleil Largo XXV Luglio à 19h30 → table à 20h30. Retour voiture ~22h, Santa Venerina ~23h30. <strong>Réservation indispensable</strong> — un mardi de mai en saison sur Ortigia, les bonnes adresses se remplissent tôt.
+          <p class="resv-when">Réserver dès J1 (lundi soir) · Pour le mardi 19 mai 20h30</p>
+        </div>
+      </div>
+
+      <!-- Billets Parc Archéologique Syracuse — J1 -->
+      <div class="resv-item">
+        <div class="resv-urgency soon">
+          <span class="resv-u-ico">🟡</span>
+          <span class="resv-u-label">La veille</span>
+        </div>
+        <p class="resv-name">Billets Parc Archéologique de Neapolis · Syracuse</p>
+        <div class="resv-tag-col"><span class="tag tag-sea">J2 · Matin</span></div>
+        <div class="resv-body">
+          Théâtre grec, amphithéâtre romain, latomies, Oreille de Denys. Achat en ligne pour éviter 15 min de queue à la caisse — les cars arrivent vers 10h30, vous serez là à 10h15. Le billet se prend sur le site du Parco Archeologico della Neapolis.
+          <p class="resv-when">Acheter en ligne le lundi soir (J1) · Pour le mardi 19 mai dès l'ouverture</p>
+        </div>
+      </div>
+
+      <!-- Da Nino Taormina — J4 soir ou J5 matin -->
+      <div class="resv-item">
+        <div class="resv-urgency flex">
+          <span class="resv-u-ico">🟢</span>
+          <span class="resv-u-label">Flexible</span>
+        </div>
+        <p class="resv-name">Da Nino · Taormina</p>
+        <div class="resv-tag-col"><span class="tag tag-good">J5 · Déjeuner</span></div>
+        <div class="resv-body">
+          Institution de Taormina, cuisine sicilienne classique, prix raisonnables pour la destination. Réservation conseillée pour 4 personnes. Appeler la veille (J4 soir) ou le matin même (J5 à l'ouverture). Alternative : Trattoria di Concettina si Da Nino est complet — sans réservation.
+          <p class="resv-when">Appeler J4 soir ou J5 matin · Pour le vendredi 22 mai ~12h30</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       04 — COURSES & REPAS
+  ══════════════════════════════════════ -->
+  <section id="courses">
+    <div class="section-hd">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Courses & <em>repas</em></h2>
+    </div>
+
+    <div class="repas-grid">
+
+      <!-- Petits-déjeuners -->
+      <div class="repas-block">
+        <div class="repas-hd">
+          <span class="repas-ico">🌅</span>
+          <span class="repas-title">Petits-déjeuners · Depuis l'Airbnb · Protéiné</span>
+        </div>
+        <div class="repas-body">
+          <p style="font-size:0.82rem;opacity:0.72;line-height:1.7;margin-bottom:0.85rem;">La règle du séjour : <strong>petit-déjeuner protéiné à l'Airbnb</strong> avant de partir — œufs, charcuterie, fromage, fruits, pain. Le café est optionnel et se gère en route (bar au comptoir en Sicile = 1–1,50€, expresso serré). Granita Russo reste un plaisir à saisir quand le programme le permet, pas une obligation matinale.</p>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J1</span>
+            <span class="rpd-content">Pas de petit-déj à l'Airbnb le matin — <strong>arrivée le midi</strong>. Premier repas = déjeuner à Aci Trezza. <strong>Granita Russo en rentrant des courses</strong> (~16h30) : c'est la bienvenue en Sicile.</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J2</span>
+            <span class="rpd-content"><strong>Petit-déj protéiné Airbnb</strong> (départ 8h00–8h30) · œufs, charcuterie, fromage, pain, fruits · café en route si besoin — premier bar sur la SS114</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J3</span>
+            <span class="rpd-content"><strong>Petit-déj protéiné Airbnb</strong> (départ 8h00–8h30) · Café chaud au Rifugio Sapienza avant la marche (~9h45) — transition thermique obligatoire à 1 910 m</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J4</span>
+            <span class="rpd-content"><strong>Petit-déj protéiné Airbnb</strong> (départ 7h30–8h00) · rapide, complet, préparé la veille — granita Russo à 7h45 si elle ouvre à cette heure (à vérifier), sinon bar en route vers Catane</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J5</span>
+            <span class="rpd-content"><strong>Petit-déj protéiné Airbnb</strong> (départ 7h45–8h15) · premier café de la journée au bar Piazza Vittorio Emanuele à Taormina, en montant vers le théâtre</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J6</span>
+            <span class="rpd-content"><strong>Petit-déj Airbnb</strong> · finir les restes · granita Russo si le temps le permet — dernier rituel du séjour avant la route vers CTA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dîners maison -->
+      <div class="repas-block">
+        <div class="repas-hd">
+          <span class="repas-ico">🍳</span>
+          <span class="repas-title">Dîners à l'Airbnb · J1 · J3 · J4</span>
+        </div>
+        <div class="repas-body">
+          <div class="repas-day-row">
+            <span class="rpd-jour">J1</span>
+            <span class="rpd-content"><strong>Dîner d'installation — simple</strong> · Charcuterie, mozzarella di bufala, tomates, olives, pain. Pâtes si le groupe a faim. Pas de cuisine élaborée le soir d'arrivée.</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J3</span>
+            <span class="rpd-content"><strong>Dîner léger après l'Etna</strong> · déjeuner copieux à Zafferana = appétit modéré le soir. Soupe ou salade, fromages, charcuterie. La terrasse sur les pentes de l'Etna et la lumière de fin d'après-midi suffisent comme programme de soirée.</span>
+          </div>
+          <div class="repas-day-row">
+            <span class="rpd-jour">J4</span>
+            <span class="rpd-content"><strong>Dîner maison après Vendicari</strong> (retour ~19h30) · Pâtes aux fruits de mer ou à la norma. Tomates, basilic, burrata. Fruits de saison. Le groupe aura marché sous le soleil — hydratation avant tout.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Courses -->
+      <div class="repas-block">
+        <div class="repas-hd">
+          <span class="repas-ico">🛒</span>
+          <span class="repas-title">Liste de courses · J1 après-midi · Un seul arrêt</span>
+        </div>
+        <div class="repas-body">
+          <p class="courses-intro"><strong>Un seul arrêt : Conad Superstore Aci Sant'Antonio</strong> (Via Marchesana 50, ~15h30 après Aci Trezza). Superstore = rayon frais complet avec gastronomia, salumerie, fromagerie à la coupe. Inutile de scinder la course en deux magasins — tout est ici. Climatisation dans le coffre, plein complet, direction Airbnb directement. On gagne 45 minutes.</p>
+          <div class="courses-cols">
+            <div class="courses-col">
+              <p class="courses-col-title">Sec · Conserves · Boissons</p>
+              <ul class="courses-list">
+                <li><strong>Eau — impératif : 5–6 packs de 6L</strong> (robinet non potable · citerne Etna · 4 pers × 5 nuits = ~50–60L boisson + cuisson + dents)</li>
+                <li>Pâtes (spaghetti, rigatoni)</li>
+                <li>Conserves tomates pelées, concentré</li>
+                <li>Huile d'olive</li>
+                <li>Café moulu (moka si dispo à l'Airbnb — à vérifier à l'arrivée)</li>
+                <li>Sel, poivre, ail</li>
+                <li>Olives en conserve</li>
+                <li>Thon en boîte</li>
+                <li>Crackers / pain grillé (petits-déj)</li>
+                <li>Vin blanc local (apéro + cuisine)</li>
+                <li>Jus d'orange, bière (optionnel)</li>
+              </ul>
+            </div>
+            <div class="courses-col">
+              <p class="courses-col-title">Frais · Rayon gastronomia</p>
+              <ul class="courses-list">
+                <li><strong>Mozzarella di bufala</strong> (×3–4, pour J1 soir + J4)</li>
+                <li>Burrata (pour J4 dîner)</li>
+                <li>Charcuterie : mortadelle, coppa, bresaola</li>
+                <li>Fromages : pecorino, ricotta salata</li>
+                <li>Œufs (×12 — petits-déj protéinés)</li>
+                <li>Yaourts grecs, fromage blanc</li>
+                <li>Tomates (cerises + rondes)</li>
+                <li>Basilic frais, légumes</li>
+                <li>Fruits de saison : oranges, fraises</li>
+                <li>Pain frais (J1 soir + J2 matin)</li>
+                <li>Beurre, confiture (petits-déj)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="courses-warn">
+            💧 <strong>L'eau d'abord, tout le reste ensuite.</strong> Écrire <strong>"EAU ×6 packs 6L"</strong> sur le téléphone avant d'entrer — c'est le seul article qui manque vraiment si oublié. 2–3 packs = asséché en 36h pour 4 personnes. 5–6 packs = tranquillité pour le séjour complet (boisson, cuisson des pâtes, brossage des dents, café si moka sur place).
+          </div>
+          <p style="font-size:0.78rem;opacity:0.55;font-style:italic;margin-top:1rem;line-height:1.6;">Réappro en cours de séjour : Decò Santa Venerina (Via Mazzini 61, horaires continus) pour les petits achats quotidiens si besoin — à 5 min de l'Airbnb.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /main -->
+
+<footer>
+  Sicile · Costa ionica · Maggio 2026 · <em>Planning général · 18–23 mai</em> · Preparato con cura
+</footer>
+
+<script>
+  // Sticky nav active section highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-a');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const target = document.querySelector(`.nav-a[href="#${entry.target.id}"]`);
+        if (target) target.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-5% 0px -88% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  // Smooth scroll
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
