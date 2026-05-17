@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jour 3 — Etna · Zafferana · Sicile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C4622D;
+    --terra-dark: #8B3E18;
+    --gold: #D4A853;
+    --cream: #F7F0E3;
+    --parchment: #EDE3CC;
+    --dark: #2B1F14;
+    --olive: #5C6B3A;
+    --sea: #3A6B7A;
+    --lava: #3D2010;
+    --ash: #6B6058;
+    --text: #3D2B1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--lava);
+    color: var(--cream);
+    padding: 3rem 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%,   rgba(196,98,45,0.5)  0%, transparent 55%),
+      radial-gradient(ellipse at 85% 110%, rgba(212,168,83,0.15) 0%, transparent 55%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 7vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    margin-bottom: 0.5rem;
+  }
+  header h1 em { font-style: italic; color: var(--gold); }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 1.4rem;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    opacity: 0.65;
+  }
+  .meta-pill .label { opacity: 0.55; }
+
+  /* ── ÉQUIPEMENT BANNER ── */
+  .equip-banner {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 1.1rem 1.75rem;
+  }
+  .equip-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    width: 100%;
+  }
+  .equip-ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .equip-text { font-size: 0.79rem; line-height: 1.62; opacity: 0.88; }
+  .equip-text strong { color: var(--gold); font-weight: 500; }
+  .equip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .equip-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.73rem;
+    white-space: nowrap;
+  }
+
+  /* ── BRIEF STRIP ── */
+  .brief-strip {
+    background: var(--terra);
+    color: white;
+    padding: 1.1rem 1.75rem;
+  }
+  .brief-inner { max-width: 720px; margin: 0 auto; }
+  .brief-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.65rem;
+  }
+  .brief-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0;
+    align-items: center;
+  }
+  .brief-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.79rem;
+  }
+  .brief-step::after {
+    content: '›';
+    margin: 0 0.55rem;
+    opacity: 0.35;
+    font-size: 1rem;
+  }
+  .brief-step:last-child::after { display: none; }
+  .btime {
+    font-weight: 500;
+    background: rgba(255,255,255,0.18);
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.38;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-a:hover { opacity: 0.65; }
+  .nav-a.active { opacity: 1; border-bottom-color: var(--terra); color: var(--terra-dark); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding-top: 3.75rem;
+    scroll-margin-top: 46px;
+  }
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--parchment);
+    margin-bottom: 1.75rem;
+  }
+  .sec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--terra);
+    opacity: 0.22;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.12;
+  }
+  .sec-title em { font-style: italic; color: var(--terra); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tag-must  { background: rgba(196,98,45,0.11); color: var(--terra-dark);  border: 1px solid rgba(196,98,45,0.2); }
+  .tag-good  { background: rgba(92,107,58,0.1);  color: var(--olive);       border: 1px solid rgba(92,107,58,0.2); }
+  .tag-sea   { background: rgba(58,107,122,0.09); color: var(--sea);         border: 1px solid rgba(58,107,122,0.2); }
+  .tag-anec  { background: rgba(43,31,20,0.07);  color: var(--text);        border: 1px solid rgba(43,31,20,0.12); opacity: 0.7; }
+  .tag-gold  { background: rgba(212,168,83,0.12); color: #7A5A10;            border: 1px solid rgba(212,168,83,0.3); }
+  .tag-warn  { background: rgba(139,62,24,0.1);  color: var(--terra-dark);  border: 1px solid rgba(139,62,24,0.25); }
+
+  /* ── PLACE CARD ── */
+  .card-list { display: flex; flex-direction: column; gap: 1.1rem; }
+  .card {
+    background: white;
+    border-radius: 6px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 14px rgba(43,31,20,0.1); transform: translateY(-1px); }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+  }
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .card-body { font-size: 0.84rem; line-height: 1.72; opacity: 0.78; }
+  .card-detail { font-size: 0.72rem; margin-top: 0.55rem; opacity: 0.42; font-style: italic; }
+
+  /* ── ALTITUDE BLOCK ── */
+  .altitude-block {
+    background: var(--lava);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .altitude-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(196,98,45,0.35) 0%, transparent 60%);
+  }
+  .altitude-block > * { position: relative; z-index: 1; }
+  .alt-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 0.5rem;
+  }
+  .alt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+  .alt-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .alt-cell {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 0.65rem 0.85rem;
+  }
+  .alt-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 0.25rem;
+  }
+  .alt-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .alt-sub { font-size: 0.72rem; opacity: 0.6; margin-top: 0.2rem; }
+
+  /* ── HISTORY ── */
+  .history-block {
+    background: var(--dark);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.85rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .history-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(196,98,45,0.22) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(212,168,83,0.1) 0%, transparent 60%);
+  }
+  .history-block > * { position: relative; z-index: 1; }
+  .history-block p {
+    font-size: 0.87rem;
+    line-height: 1.88;
+    opacity: 0.82;
+    margin-bottom: 1.25rem;
+  }
+  .history-block p:last-child { margin-bottom: 0; }
+  .history-block strong { color: var(--gold); font-weight: 500; }
+  .history-block em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05em; }
+
+  /* ── PRACTICAL ── */
+  .prac-block { margin-bottom: 2.25rem; }
+  .prac-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .prac-title .ico { font-size: 1rem; opacity: 1; }
+
+  .pcard {
+    background: white;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    margin-bottom: 0.8rem;
+  }
+  .pcard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+  .pcard-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .pcard-addr { font-size: 0.7rem; opacity: 0.4; font-style: italic; margin-bottom: 0.4rem; }
+  .pcard-body { font-size: 0.81rem; line-height: 1.68; opacity: 0.72; }
+  .pcard-body strong { font-weight: 500; color: var(--dark); opacity: 1; }
+
+  /* ── INFO / WARN BOXES ── */
+  .info-box {
+    background: rgba(58,107,122,0.07);
+    border-left: 3px solid var(--sea);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: #2d5462;
+    margin-bottom: 0.8rem;
+  }
+  .info-box strong { font-weight: 500; }
+  .warn-box {
+    background: rgba(139,62,24,0.07);
+    border-left: 3px solid var(--terra);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--terra-dark);
+    margin-bottom: 0.8rem;
+  }
+  .warn-box strong { font-weight: 500; }
+
+  /* ── WEBCAM BOX ── */
+  .webcam-box {
+    background: var(--olive);
+    color: white;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .webcam-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(255,255,255,0.07) 0%, transparent 55%);
+  }
+  .webcam-box > * { position: relative; z-index: 1; }
+  .wb-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.4rem;
+  }
+  .wb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+    line-height: 1.25;
+  }
+  .wb-body { font-size: 0.82rem; line-height: 1.65; opacity: 0.9; }
+  .wb-body strong { font-weight: 500; }
+
+  /* ── VIGILANCE ── */
+  .vig-list { display: flex; flex-direction: column; gap: 1rem; }
+  .vig-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.25rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.06), 0 0 0 1px rgba(43,31,20,0.04);
+  }
+  .vig-ico { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; width: 1.5rem; text-align: center; }
+  .vig-content { flex: 1; }
+  .vig-head { font-size: 0.85rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; line-height: 1.3; }
+  .vig-body { font-size: 0.8rem; line-height: 1.68; opacity: 0.65; }
+  .vig-item.warn { border-left: 3px solid var(--terra); border-radius: 0 6px 6px 0; }
+  .vig-item.warn .vig-head { color: var(--terra-dark); }
+  .vig-item.gold-warn { border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; }
+  .vig-item.gold-warn .vig-head { color: #7A5A10; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--lava);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.73rem;
+    opacity: 0.7;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 2.5rem 1.25rem 2rem; }
+    .brief-strip, .equip-banner { padding: 1rem 1.25rem; }
+    .main { padding: 0 1.1rem 4rem; }
+    .history-block { padding: 1.4rem 1.25rem; }
+    .altitude-block { padding: 1.25rem; }
+    .alt-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <span class="eyebrow">Jour 3 · Mercredi 20 mai 2026 · Journée volcanique</span>
+    <h1>Etna<br><em>& Zafferana</em></h1>
+    <div class="header-meta">
+      <div class="meta-pill">🌋 <span class="label">Altitude ·</span> 1 900 m aux Crateri Silvestri</div>
+      <div class="meta-pill">🌡️ <span class="label">Côte ·</span> 26°C — Sommet · 11–13°C</div>
+      <div class="meta-pill">🕗 <span class="label">Départ ·</span> 8h30 Santa Venerina</div>
+      <div class="meta-pill">🚗 <span class="label">Trajet ·</span> 1h05–1h20 via Nicolosi</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     ÉQUIPEMENT BANNER
+══════════════════════════════════════ -->
+<div class="equip-banner">
+  <div class="equip-inner">
+    <span class="equip-ico">🧥</span>
+    <div class="equip-text">
+      <strong>Équipement obligatoire avant de quitter l'Airbnb</strong> — à préparer ce soir. À 1 900 m, il fait 15°C de moins qu'à la côte. Ce n'est pas une suggestion.
+      <div class="equip-list">
+        <span class="equip-item">🧥 Veste chaude</span>
+        <span class="equip-item">💨 Coupe-vent</span>
+        <span class="equip-item">👟 Chaussures fermées</span>
+        <span class="equip-item">🕶️ Lunettes de soleil</span>
+        <span class="equip-item">🧴 Crème solaire FPS50+</span>
+        <span class="equip-item">💧 Eau (1,5L/pers.)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BRIEF STRIP
+══════════════════════════════════════ -->
+<div class="brief-strip">
+  <div class="brief-inner">
+    <p class="brief-eyebrow">Programme du jour</p>
+    <div class="brief-row">
+      <div class="brief-step"><span class="btime">8h30</span> Départ + webcam check</div>
+      <div class="brief-step"><span class="btime">~9h45</span> Rifugio Sapienza · 1 910 m</div>
+      <div class="brief-step"><span class="btime">10h–12h</span> Marche Crateri Silvestri</div>
+      <div class="brief-step"><span class="btime">~13h</span> Descente Zafferana Etnea</div>
+      <div class="brief-step"><span class="btime">13h30–15h</span> Déjeuner vue côte</div>
+      <div class="brief-step"><span class="btime">~15h</span> Retour Santa Venerina</div>
+      <div class="brief-step"><span class="btime">~16h</span> Terrasse · V60 · Repos</div>
+      <div class="brief-step"><span class="btime">Soirée</span> Dîner maison</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STICKY NAV
+══════════════════════════════════════ -->
+<nav class="sticky-nav" aria-label="Sections">
+  <div class="nav-inner">
+    <a href="#incontournables" class="nav-a active">01 · Incontournables</a>
+    <a href="#curiosites"      class="nav-a">02 · Curiosités</a>
+    <a href="#histoire"        class="nav-a">03 · Histoire</a>
+    <a href="#carnet"          class="nav-a">04 · Carnet pratique</a>
+    <a href="#vigilance"       class="nav-a">05 · Vigilance</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════════
+       BLOC ALTITUDE
+  ══════════════════════════════════════ -->
+  <div class="altitude-block" style="margin-top: 3rem;">
+    <p class="alt-eyebrow">Référence météo du jour · Ne pas raisonner depuis Catane</p>
+    <p class="alt-title">Deux températures, deux tenues</p>
+    <div class="alt-row">
+      <div class="alt-cell">
+        <p class="alt-label">Côte · Santa Venerina</p>
+        <p class="alt-val">26°C</p>
+        <p class="alt-sub">Très belle journée, estivale</p>
+      </div>
+      <div class="alt-cell">
+        <p class="alt-label">Crateri Silvestri · 1 900 m</p>
+        <p class="alt-val">11–13°C</p>
+        <p class="alt-sub">Vent possible, ressenti froid</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       01 — INCONTOURNABLES
+  ══════════════════════════════════════ -->
+  <section id="incontournables">
+    <div class="section-hd">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">À voir <em>absolument</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Crateri Silvestri — la marche des cratères</p>
+          <span class="tag tag-must">Immanquable</span>
+        </div>
+        <p class="card-body">Deux cratères parasitaires nés en 1892, à 1 892 m d'altitude — le Silvestri Inferiore (le plus grand, accessible, bord praticable) et le Superiore (plus escarpé). Paysage lunaire : lave solidifiée noire, vapeur qui s'échappe par endroits, sol spongieux et instable sous les chaussures. Vue dégagée sur la côte ionienne par temps clair — on voit jusqu'à Catane et parfois Syracuse. La marche complète autour des deux cratères prend 1h à 1h30 selon le rythme. Pas de guide nécessaire pour ce circuit standard, mais chaussures fermées absolument obligatoires — la lave scoriacée coupe les semelles de randonnée légère.</p>
+        <p class="card-detail">Depuis le Rifugio Sapienza · Accès libre · Balisage sommaire mais lisible</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">La montée en voiture — SP92</p>
+          <span class="tag tag-must">Ne pas zapper</span>
+        </div>
+        <p class="card-body">La route de Nicolosi au Rifugio Sapienza (SP92) est en elle-même une expérience. On passe en 45 minutes de la végétation méditerranéenne dense aux vignes noires sur lave, puis aux coulées figées des éruptions récentes, puis au désert volcanique absolu. Chaque tranche d'altitude correspond à une éruption datée — certaines coulées portent des panneaux avec l'année. Prévoir des arrêts photos en montant : la vue sur la côte depuis ~1 400 m est spectaculaire par temps clair.</p>
+        <p class="card-detail">SP92 depuis Nicolosi · ~45 min de montée · Arrêts libres sur les aires dégagées</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Zafferana Etnea — la descente et le déjeuner</p>
+          <span class="tag tag-good">Très qualitatif</span>
+        </div>
+        <p class="card-body">Village perché à ~600 m sur le versant sud-est de l'Etna, à 30–40 min de route depuis le Rifugio Sapienza. Terrasses avec vue sur la côte ionienne, spécialités locales — miel d'Etna, champignons, pasta au pistache ou au sanglier. Village calme, peu touristique hors saison, ambiance authentique. L'arrêt déjeuner idéal après une matinée à 1 900 m : redescendre en altitude progressivement, manger chaud, laisser le groupe souffler avant la route de retour.</p>
+        <p class="card-detail">Zafferana Etnea · ~600 m · 30–40 min depuis le Rifugio Sapienza</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       02 — CURIOSITÉS
+  ══════════════════════════════════════ -->
+  <section id="curiosites">
+    <div class="section-hd">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Curiosités <em>proches</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Rifugio Sapienza — le camp de base</p>
+          <span class="tag tag-sea">Point de départ</span>
+        </div>
+        <p class="card-body">Le Rifugio Sapienza (1 910 m) est la base logistique de l'Etna sud. Parking, bar, restaurant, boutiques de souvenirs volcaniques, départ du téléphérique vers 2 500 m. Le bâtiment principal a été partiellement détruit par la coulée de lave de 2001 — les photos de l'époque sont affichées à l'intérieur. Café obligatoire avant la marche : chaud, en intérieur, les mains autour de la tasse. C'est la transition thermique avant de sortir dans le vent.</p>
+        <p class="card-detail">1 910 m · Bar ouvert dès l'arrivée des premiers visiteurs · ~9h–10h en mai</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Les coulées datées — géologie visible</p>
+          <span class="tag tag-anec">Sur la route</span>
+        </div>
+        <p class="card-body">En montant sur la SP92, des panneaux jalonnent les coulées selon leur année d'éruption : 1983, 1991, 2001, 2002. Chaque coulée a une couleur et une texture différentes selon son âge — la lave fraîche est noire et brillante, celle de 20 ans est grise et friable, celle de 50 ans commence à se couvrir de mousse et de lichens. Une leçon de géologie en temps réel depuis le siège passager.</p>
+        <p class="card-detail">SP92, entre Nicolosi et le Rifugio · Visibles depuis la voiture</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Versant nord — Linguaglossa + Shalai Resort</p>
+          <span class="tag tag-gold">Option si départ 7h30</span>
+        </div>
+        <p class="card-body">Le versant nord de l'Etna (Piano Provenzana, Linguaglossa) est plus sauvage et moins fréquenté que le versant sud. Le Shalai Resort à Linguaglossa tient la meilleure carte de vins Etna de la région — Nerello Mascalese, Carricante, producteurs de niche. Option à part entière si le groupe est vraiment motivé et part à 7h30 — mais c'est une journée différente, pas un ajout au programme habituel. À garder pour un prochain voyage ou une décision de dernière minute ce soir.</p>
+        <p class="card-detail">Linguaglossa · +30–40 min depuis Santa Venerina · Ne pas combiner avec Silvestri le même jour</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Aci Castello — si vraiment le groupe veut encore bouger</p>
+          <span class="tag tag-anec">Exception · ~30 min</span>
+        </div>
+        <p class="card-body">Le château normand sur le promontoire de lave noire, à 30 min sur le chemin du retour. Vue sur les Faraglioni depuis les remparts — 20 min de visite, pas plus. Une bonne façon de boucler la boucle "lave noire" de la journée si le groupe est unanimement partant en quittant Zafferana. En revanche, si la décision n'est pas unanime et enthousiaste à la sortie du restaurant : passer son chemin. La terrasse de l'Airbnb est un meilleur programme pour un groupe qui a marché sur un volcan le matin.</p>
+        <p class="card-detail">Aci Castello · ~3€ · Uniquement si décision collective claire à Zafferana</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       03 — HISTOIRE
+  ══════════════════════════════════════ -->
+  <section id="histoire">
+    <div class="section-hd">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Un peu <em>d'histoire</em></h2>
+    </div>
+
+    <div class="history-block">
+      <p>L'Etna est le plus grand volcan actif d'Europe — <strong>3 357 m</strong> aujourd'hui, mais la hauteur change après chaque éruption importante. Il est en activité depuis 500 000 ans. Les Grecs le plaçaient au centre de leur cosmologie : c'est ici que vivait <strong>Héphaïstos</strong>, dieu de la forge, et que le Titan Typhon était emprisonné sous la montagne — ses soubresauts expliquaient les tremblements de terre. L'Etna en grec, <em>Aitna</em>, vient probablement du grec <em>aitho</em> — "je brûle".</p>
+      <p>L'éruption de <strong>1669</strong> est la plus catastrophique des temps modernes : une fissure de 15 km s'ouvre sur le flanc sud, une coulée de lave atteint Catane et détruit une partie de ses remparts, puis avance dans la mer sur 700 mètres. Des quartiers entiers de la ville disparaissent. L'éruption dure 122 jours. En 2002, une double éruption nord-sud détruit partiellement le Rifugio Sapienza et l'observatoire de Piano Provenzana — les photos sont encore dans les murs du Rifugio.</p>
+      <p>Les <strong>Crateri Silvestri</strong> que vous marcherez ce matin ne sont pas les cratères sommitaux — ce sont des <em>cônes adventifs</em>, nés d'une fissure latérale lors de l'éruption de 1892. L'Etna en possède des centaines, dispersés sur tout son flanc. La montagne est vivante en permanence — des micro-éruptions se produisent en moyenne toutes les quelques semaines. Ce que vous verrez ce matin a peut-être bougé depuis la dernière publication des cartes.</p>
+      <p>Zafferana Etnea, le village où vous déjeunerez, a failli disparaître en <strong>1992</strong>. Une coulée de lave lente mais inexorable avançait depuis des mois vers le village. L'armée italienne a procédé à des bombardements aériens pour dévier la coulée, et des barrages de béton ont été coulés en urgence. La lave s'est arrêtée à moins de 100 mètres des premières maisons. Ce n'est pas de la folklore : les habitants se souviennent.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       04 — CARNET PRATIQUE
+  ══════════════════════════════════════ -->
+  <section id="carnet">
+    <div class="section-hd">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Carnet <em>pratique</em></h2>
+    </div>
+
+    <!-- WEBCAM CHECK -->
+    <div class="webcam-box">
+      <p class="wb-eyebrow">Rituel obligatoire · Ce soir et demain matin</p>
+      <p class="wb-title">Vérifier la webcam avant de monter</p>
+      <p class="wb-body">La webcam du Rifugio Sapienza permet de voir en temps réel si le sommet est dégagé ou dans les nuages. Une journée de "ciel bleu à Catane" peut cacher un sommet dans la brume à 1 900 m. <strong>Vérifier deux fois : ce soir avant de dormir, et demain matin au réveil avant de partir.</strong> Si le sommet est dans les nuages à 8h, deux options : attendre 1h (les brumes matinales se lèvent souvent) ou replanifier. La webcam est accessible depuis le site de l'INGV Sicilia ou via une recherche "webcam Rifugio Sapienza Etna".</p>
+    </div>
+
+    <!-- MANGER -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🍽️</span> Où manger — Deux moments, deux registres</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Bar du Rifugio Sapienza — café de montagne</p>
+          <span class="tag tag-sea">9h45 · Avant la marche</span>
+        </div>
+        <p class="pcard-addr">Rifugio Sapienza · 1 910 m · Versant sud Etna</p>
+        <p class="pcard-body">Café chaud, cornetto, éventuellement un sandwich pour l'effort de la marche. Prix de montagne (légèrement majorés), qualité honnête. <strong>Ne pas sauter ce café</strong> — la transition thermique entre la voiture chauffée et le vent de cratère est brutale. Mains autour de la tasse, 10 minutes de transition thermique avant de sortir.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Trattoria de village — Zafferana Etnea</p>
+          <span class="tag tag-must">Déjeuner · 13h30–15h</span>
+        </div>
+        <p class="pcard-addr">Centre de Zafferana Etnea · ~600 m</p>
+        <p class="pcard-body">Pas de nom préétabli — scanner les terrasses avec vue à l'arrivée dans le village. Critères : tables dehors avec vue sur la côte, menu ardoise, produits locaux. Spécialités de l'Etna à viser : <em>pasta al pistacchio di Bronte</em>, <em>pasta ai funghi porcini</em>, <em>coniglio alla cacciatora</em> (lapin chasseur). Le miel d'Etna (acacia, châtaignier, agrumes) est vendu dans les boutiques du village — idéal à ramener. <strong>Prévoir 1h30 à table</strong> : c'est la pause méritée après la matinée volcanique.</p>
+      </div>
+
+      <div class="info-box">
+        <strong>Séquence J3 :</strong> Café Rifugio Sapienza ~9h45 → marche Silvestri 10h–12h → redescente en voiture Zafferana ~13h → déjeuner 13h30 → flânerie village + achat miel → retour Santa Venerina ~16h. <strong>Défaut : rentrée directe, terrasse, repos.</strong> Aci Castello sur le chemin uniquement si le groupe est unanimement partant à la sortie du restaurant — pas une décision de compromis.
+      </div>
+    </div>
+
+    <!-- REPLI STRATÉGIQUE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🏡</span> L'après-midi — le repli stratégique</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Retour à l'Airbnb — le bon choix</p>
+          <span class="tag tag-must">Recommandé · ~16h</span>
+        </div>
+        <p class="pcard-body">Ne pas sous-estimer l'état physique du groupe à la sortie du restaurant. J2 s'est probablement terminé à minuit passé. J3 matin : vent froid à 1 900 m, sol instable, descente d'altitude brutale, déjeuner copieux. Le coup de barre physiologique en sortant de table à Zafferana est réel. La terrasse de l'Airbnb sur les flancs de l'Etna vaut tous les programmes d'après-midi forcés — et la lumière de fin d'après-midi sur les pentes du volcan est douce, longue, photographique.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Ce qu'on peut faire sur la terrasse</p>
+          <span class="tag tag-good">Activités non-musclées</span>
+        </div>
+        <p class="pcard-body">Sortir le V60 et prendre le temps d'une vraie extraction manuelle avec l'eau minérale ramenée le J1 — le genre de café qu'on ne fait pas en déplacement. Roza-Mariia décharge et trie les premières cartes mémoires de la journée pendant que le café infuse. Si les textures sonores de la campagne environnante sont là — oiseaux, vent dans les arbres fruitiers, ambiance Etna — c'est le moment pour le Zoom H5 : poser le micro sur la rambarde, laisser tourner 20 minutes sans pression d'itinéraire. Ces captations passives sont souvent les meilleures du carnet de terrain.</p>
+      </div>
+
+      <div class="warn-box">
+        <strong>Catane l'après-midi : à exclure.</strong> Descendre s'enfermer dans le trafic dense et les 26°C de la ville à 16h, après la tranquillité du volcan et un déjeuner copieux, est la recette d'une humeur massacrante. La Pescheria de Catane — la vraie raison d'y aller — ferme à 13h.
+      </div>
+    </div>
+
+    <!-- CAFÉ / VERRE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">☕</span> Café · Granita · Vins Etna</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Pasticceria Russo — avant le départ</p>
+          <span class="tag tag-good">8h15 · Rituel matinal</span>
+        </div>
+        <p class="pcard-addr">Via Vittorio Emanuele 105 · Santa Venerina · 3 min de l'Airbnb</p>
+        <p class="pcard-body">Ouverte tôt en saison. Granita + brioche col tuppo avant la route — c'est le rituel du séjour. Départ 8h30 = passage Russo à 8h15. Même bref, ne pas sauter : c'est le seul matin de la semaine où vous êtes à la fois tôt debout, bien réveillés, et à 3 minutes de la meilleure pasticceria de l'Etna.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Vins Etna — au déjeuner à Zafferana</p>
+          <span class="tag tag-gold">Nerello · Carricante</span>
+        </div>
+        <p class="pcard-body">Le versant de l'Etna est l'une des zones viticoles les plus excitantes d'Italie depuis 20 ans. <em>Nerello Mascalese</em> rouge (léger, acide, terroir volcanique marqué) et <em>Carricante</em> blanc (minéral, frais, côté nord de l'Etna). Demander un verre de vin local au déjeuner à Zafferana — les restaurateurs du coin ont souvent quelques bouteilles de producteurs voisins. Ne pas chercher les grandes appellations sur une carte : demander "vino della zona, naturale si possibile".</p>
+      </div>
+    </div>
+
+    <!-- TOILETTES -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🚽</span> Toilettes</p>
+      <div class="pcard">
+        <p class="pcard-body"><strong>Rifugio Sapienza</strong> : toilettes publiques disponibles dans le bâtiment principal — les utiliser avant de partir en marche. Prévoir aussi avant de reprendre la voiture pour la descente (1h de route). <strong>Sur le parcours des cratères</strong> : aucune installation. Prévoir au Rifugio avant de partir. <strong>Zafferana</strong> : dans le restaurant du déjeuner.</p>
+      </div>
+    </div>
+
+    <!-- NAUTIQUE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🤿</span> Activités nautiques</p>
+      <div class="pcard">
+        <p class="pcard-body"><strong>Journée volcanique — aucune activité nautique prévue.</strong> Le programme de la journée est complet entre le volcan, le déjeuner à Zafferana, et le retour à l'Airbnb. Si une impulsion bain saisit quelqu'un sur la route du retour : noter Aci Trezza pour J6 matin, avant le départ.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       05 — VIGILANCE
+  ══════════════════════════════════════ -->
+  <section id="vigilance">
+    <div class="section-hd">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Points de <em>vigilance</em></h2>
+    </div>
+
+    <div class="vig-list">
+
+      <div class="vig-item warn">
+        <span class="vig-ico">🌡️</span>
+        <div class="vig-content">
+          <p class="vig-head">L'effet d'altitude — la règle des 15°C</p>
+          <p class="vig-body">26°C à Santa Venerina ne signifie pas 26°C au sommet. À 1 900 m, compter 11–13°C maximum vers midi, ressenti 7–9°C avec le vent. Le piège classique : sortir de la voiture en t-shirt parce qu'il faisait chaud en bas. La veste et le coupe-vent restent sur le dos pendant toute la marche — il ne fait pas "chaud au soleil là-haut", il fait frais et le vent peut tomber d'un coup. Préparer les sacs ce soir.</p>
+        </div>
+      </div>
+
+      <div class="vig-item warn">
+        <span class="vig-ico">👟</span>
+        <div class="vig-content">
+          <p class="vig-head">Chaussures fermées — non-négociable</p>
+          <p class="vig-body">La lave scoriacée autour des Crateri Silvestri est irrégulière, tranchante, et instable. Les semelles de sandales ou de sneakers légères s'y abîment ou glissent. Une cheville tordue sur ce terrain, à 1 900 m, à 1h15 de route de Santa Venerina, c'est une journée gâchée pour tout le groupe. Chaussures de marche ou au minimum sneakers basses à semelle épaisse. Vérifier ce soir que les 4 personnes ont les bonnes chaussures dans leurs bagages.</p>
+        </div>
+      </div>
+
+      <div class="vig-item gold-warn">
+        <span class="vig-ico">📡</span>
+        <div class="vig-content">
+          <p class="vig-head">Webcam + état du site : vérifier deux fois</p>
+          <p class="vig-body">Ce soir avant de dormir et demain matin avant de partir. Si le sommet est dans les nuages à 8h : patienter 30–60 min (les brumes matinales se lèvent souvent avant 10h). Si la visibilité est nulle et que la météo ne s'annonce pas favorable : reporter l'Etna à J5 matin (journée Taormina, versant sud) et inverser les journées J3/J5. Ce n'est pas un scénario probable le mercredi 20 mai, mais avoir le plan B en tête. L'INGV Sicilia publie aussi des bulletins d'activité volcanique : une activité éruptive forte (fontaines de lave, projections) peut fermer le site aux visiteurs.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🛣️</span>
+        <div class="vig-content">
+          <p class="vig-head">SP92 — route sinueuse, GPS capricieux au-dessus de 1 500 m</p>
+          <p class="vig-body">La route du Rifugio Sapienza est bien balisée depuis Nicolosi mais le GPS devient parfois erratique au-dessus de 1 500 m (signal affaibli, mises à jour cartographiques incomplètes sur les routes de lave récentes). Suivre les panneaux "Rifugio Sapienza" et "Etna Sud" en cas de doute. La route est à sens unique dans certaines portions en saison — respecter. Ajouter 15–20 min au temps Google Maps.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🌋</span>
+        <div class="vig-content">
+          <p class="vig-head">Activité volcanique — distinguer normal et exceptionnel</p>
+          <p class="vig-body">L'Etna émet en permanence de la vapeur et parfois des petites bouffées de cendre — c'est normal, c'est un volcan actif. Les panaches de vapeur blanche du sommet sont la norme. Les fontaines de lave et projections de scories sont l'exception qui entraîne la fermeture du site. Vérifier le bulletin INGV la veille. Sur place : si un garde indique de s'éloigner d'une zone, s'éloigner sans discussion.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🎫</span>
+        <div class="vig-content">
+          <p class="vig-head">Téléphérique et guides — ce n'est pas le plan J3</p>
+          <p class="vig-body">Le téléphérique depuis le Rifugio monte à 2 500 m (Montagnola), puis des jeeps 4×4 et des guides emmènent jusqu'aux cratères sommitaux (~3 000–3 300 m). Excursion intéressante mais longue (4–5h aller-retour), chère (~65€/pers.), et non prévue ce jour. Le circuit Silvestri à pied est gratuit, accessible, et pleinement satisfaisant. Ne pas se laisser convaincre par les rabatteurs du parking.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">☀️</span>
+        <div class="vig-content">
+          <p class="vig-head">UV d'altitude — plus forts qu'on ne croit</p>
+          <p class="vig-body">À 1 900 m, l'atmosphère filtre moins les UV. Soleil d'altitude sur de la lave noire qui réverbère la chaleur = coups de soleil rapides, même par temps voilé. Crème solaire FPS50+ sur visage, nuque et mains avant de sortir du Rifugio — pas au sommet où le vent rend l'application compliquée. Lunettes de soleil portées, pas dans la poche.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🕒</span>
+        <div class="vig-content">
+          <p class="vig-head">Rythme du groupe en altitude — ne pas forcer</p>
+          <p class="vig-body">C'est le lendemain de la longue journée Syracuse (retour tardif possible si dîner à Ortigia). Certains membres du groupe pourraient être encore fatigués. La marche autour des Silvestri est douce en dénivelé (±100 m) mais le sol instable est éprouvant. Pas de honte à faire demi-tour ou à raccourcir le circuit si quelqu'un est à plat — il y a la vue depuis le parking du Rifugio qui est déjà extraordinaire.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /main -->
+
+<footer>
+  Sicile · Etna · Maggio 2026 · <em>J3 de 6</em> · Preparato con cura
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-a');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const target = document.querySelector(`.nav-a[href="#${entry.target.id}"]`);
+        if (target) target.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-5% 0px -88% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
