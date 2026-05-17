@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jour 2 — Syracuse · Ortigia · Sicile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C4622D;
+    --terra-dark: #8B3E18;
+    --gold: #D4A853;
+    --cream: #F7F0E3;
+    --parchment: #EDE3CC;
+    --dark: #2B1F14;
+    --olive: #5C6B3A;
+    --sea: #3A6B7A;
+    --sea-dark: #2A4E59;
+    --text: #3D2B1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 3rem 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 0%,   rgba(58,107,122,0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 120%, rgba(212,168,83,0.18)  0%, transparent 55%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 7vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    margin-bottom: 0.5rem;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 1.4rem;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    opacity: 0.65;
+  }
+  .meta-pill .label { opacity: 0.55; }
+
+  /* ── VENT ALERT BANNER ── */
+  .vent-banner {
+    background: #6B3A1F;
+    color: #FFE4CC;
+    padding: 0.9rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .vent-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    width: 100%;
+  }
+  .vent-ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .vent-text { font-size: 0.79rem; line-height: 1.6; opacity: 0.9; }
+  .vent-text strong { font-weight: 500; color: #FFD4A8; }
+
+  /* ── BRIEF STRIP ── */
+  .brief-strip {
+    background: var(--sea);
+    color: white;
+    padding: 1.1rem 1.75rem;
+  }
+  .brief-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brief-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.65rem;
+  }
+  .brief-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0;
+    align-items: center;
+  }
+  .brief-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.79rem;
+  }
+  .brief-step::after {
+    content: '›';
+    margin: 0 0.55rem;
+    opacity: 0.35;
+    font-size: 1rem;
+  }
+  .brief-step:last-child::after { display: none; }
+  .btime {
+    font-weight: 500;
+    background: rgba(255,255,255,0.18);
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.38;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-a:hover { opacity: 0.65; }
+  .nav-a.active { opacity: 1; border-bottom-color: var(--sea); color: var(--sea-dark); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding-top: 3.75rem;
+    scroll-margin-top: 46px;
+  }
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--parchment);
+    margin-bottom: 1.75rem;
+  }
+  .sec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--sea);
+    opacity: 0.22;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.12;
+  }
+  .sec-title em { font-style: italic; color: var(--sea); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tag-must  { background: rgba(196,98,45,0.11); color: var(--terra-dark);  border: 1px solid rgba(196,98,45,0.2); }
+  .tag-good  { background: rgba(92,107,58,0.1);  color: var(--olive);       border: 1px solid rgba(92,107,58,0.2); }
+  .tag-sea   { background: rgba(58,107,122,0.09); color: var(--sea);         border: 1px solid rgba(58,107,122,0.2); }
+  .tag-anec  { background: rgba(43,31,20,0.07);  color: var(--text);        border: 1px solid rgba(43,31,20,0.12); opacity: 0.7; }
+  .tag-gold  { background: rgba(212,168,83,0.12); color: #7A5A10;            border: 1px solid rgba(212,168,83,0.3); }
+
+  /* ── PLACE CARD ── */
+  .card-list { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .card {
+    background: white;
+    border-radius: 6px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 14px rgba(43,31,20,0.1);
+    transform: translateY(-1px);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+  }
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .card-body {
+    font-size: 0.84rem;
+    line-height: 1.72;
+    opacity: 0.78;
+  }
+  .card-detail {
+    font-size: 0.72rem;
+    margin-top: 0.55rem;
+    opacity: 0.42;
+    font-style: italic;
+  }
+
+  /* ── HISTORY ── */
+  .history-block {
+    background: var(--dark);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.85rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .history-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(58,107,122,0.28) 0%, transparent 60%),
+                radial-gradient(ellipse at 0% 100%, rgba(212,168,83,0.08) 0%, transparent 60%);
+  }
+  .history-block > * { position: relative; z-index: 1; }
+  .history-block p {
+    font-size: 0.87rem;
+    line-height: 1.88;
+    opacity: 0.82;
+    margin-bottom: 1.25rem;
+  }
+  .history-block p:last-child { margin-bottom: 0; }
+  .history-block strong { color: var(--gold); font-weight: 500; }
+  .history-block em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05em; }
+
+  /* ── PRACTICAL SECTIONS ── */
+  .prac-block { margin-bottom: 2.25rem; }
+  .prac-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .prac-title .ico { font-size: 1rem; opacity: 1; }
+
+  .pcard {
+    background: white;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    margin-bottom: 0.8rem;
+  }
+  .pcard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+  .pcard-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .pcard-addr {
+    font-size: 0.7rem;
+    opacity: 0.4;
+    font-style: italic;
+    margin-bottom: 0.4rem;
+  }
+  .pcard-body {
+    font-size: 0.81rem;
+    line-height: 1.68;
+    opacity: 0.72;
+  }
+  .pcard-body strong { font-weight: 500; color: var(--dark); opacity: 1; }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: rgba(58,107,122,0.07);
+    border-left: 3px solid var(--sea);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--sea-dark);
+    margin-bottom: 0.8rem;
+  }
+  .info-box strong { font-weight: 500; }
+
+  /* ── WARN BOX ── */
+  .warn-box {
+    background: rgba(107,58,31,0.07);
+    border-left: 3px solid var(--terra);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--terra-dark);
+    margin-bottom: 0.8rem;
+  }
+  .warn-box strong { font-weight: 500; }
+
+  /* ── PARKING BOX ── */
+  .parking-box {
+    background: var(--sea);
+    color: white;
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .parking-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.08) 0%, transparent 55%);
+  }
+  .parking-box > * { position: relative; z-index: 1; }
+  .pb-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+  .pb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+  .pb-body {
+    font-size: 0.82rem;
+    line-height: 1.68;
+    opacity: 0.9;
+  }
+  .pb-body strong { font-weight: 500; }
+  .pb-rule {
+    background: rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.78rem;
+    margin-top: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.92;
+  }
+
+  /* ── VIGILANCE ── */
+  .vig-list { display: flex; flex-direction: column; gap: 1rem; }
+  .vig-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.25rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.06), 0 0 0 1px rgba(43,31,20,0.04);
+  }
+  .vig-ico {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    width: 1.5rem;
+    text-align: center;
+  }
+  .vig-content { flex: 1; }
+  .vig-head {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .vig-body {
+    font-size: 0.8rem;
+    line-height: 1.68;
+    opacity: 0.65;
+  }
+  .vig-item.warn {
+    border-left: 3px solid var(--terra);
+    border-radius: 0 6px 6px 0;
+  }
+  .vig-item.warn .vig-head { color: var(--terra-dark); }
+  .vig-item.sea-warn {
+    border-left: 3px solid var(--sea);
+    border-radius: 0 6px 6px 0;
+  }
+  .vig-item.sea-warn .vig-head { color: var(--sea-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.73rem;
+    opacity: 0.65;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    header { padding: 2.5rem 1.25rem 2rem; }
+    .brief-strip, .vent-banner { padding: 1rem 1.25rem; }
+    .main { padding: 0 1.1rem 4rem; }
+    .history-block { padding: 1.4rem 1.25rem; }
+    .parking-box { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <span class="eyebrow">Jour 2 · Mardi 19 mai 2026 · Journée chargée</span>
+    <h1>Syracuse<br><em>& Ortigia</em></h1>
+    <div class="header-meta">
+      <div class="meta-pill">🌬️ <span class="label">Météo ·</span> 21–23°C, vent sensible</div>
+      <div class="meta-pill">🕗 <span class="label">Départ ·</span> 8h30 Santa Venerina</div>
+      <div class="meta-pill">🚗 <span class="label">Trajet ·</span> 1h35–1h50</div>
+      <div class="meta-pill">🌅 <span class="label">Coucher de soleil ·</span> ~20h Largo XXV Luglio</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     VENT ALERT
+══════════════════════════════════════ -->
+<div class="vent-banner">
+  <div class="vent-inner">
+    <span class="vent-ico">⚠️</span>
+    <p class="vent-text"><strong>Vigilance jaune vent — toute la journée du 19 mai.</strong> Secteur côte est Sicile. Syracuse et Ortigia sont néanmoins protégées — les venelles de l'île absorbent le vent. Journée urbaine : bon choix météo. Taormina et l'Etna sont à éviter ce jour. Ne pas planifier de baignade.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BRIEF STRIP
+══════════════════════════════════════ -->
+<div class="brief-strip">
+  <div class="brief-inner">
+    <p class="brief-eyebrow">Programme du jour</p>
+    <div class="brief-row">
+      <div class="brief-step"><span class="btime">8h30</span> Départ Santa Venerina</div>
+      <div class="brief-step"><span class="btime">~10h15</span> Neapolis — arrivée parking</div>
+      <div class="brief-step"><span class="btime">~12h15</span> Voiture → Molo Sant'Antonio</div>
+      <div class="brief-step"><span class="btime">12h30</span> Marché + Fratelli Burgio</div>
+      <div class="brief-step"><span class="btime">Après-midi</span> Flânerie Ortigia</div>
+      <div class="brief-step"><span class="btime">19h30</span> Largo XXV Luglio · Spritzzeria</div>
+      <div class="brief-step"><span class="btime">20h30</span> Dîner Ortigia</div>
+      <div class="brief-step"><span class="btime">~22h</span> Route retour · ~23h30 Airbnb</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STICKY NAV
+══════════════════════════════════════ -->
+<nav class="sticky-nav" aria-label="Sections">
+  <div class="nav-inner">
+    <a href="#incontournables" class="nav-a active">01 · Incontournables</a>
+    <a href="#curiosites"      class="nav-a">02 · Curiosités</a>
+    <a href="#histoire"        class="nav-a">03 · Histoire</a>
+    <a href="#carnet"          class="nav-a">04 · Carnet pratique</a>
+    <a href="#vigilance"       class="nav-a">05 · Vigilance</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════════
+       01 — INCONTOURNABLES
+  ══════════════════════════════════════ -->
+  <section id="incontournables">
+    <div class="section-hd">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">À voir <em>absolument</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Parc Archéologique de Neapolis</p>
+          <span class="tag tag-must">Immanquable · ~10h15</span>
+        </div>
+        <p class="card-body">Théâtre grec du Ve siècle av. J.-C. taillé à même la roche — 15 000 places, vue sur la mer au fond. Amphithéâtre romain. Et surtout : les <em>latomies</em>, ces carrières géantes creusées dans la falaise blanche, où ont été enfermés des milliers de prisonniers athéniens après le désastre de 413 av. J.-C. Jardin de citronniers et d'orangers entre les galeries. L'Oreille de Denys — grotte artificielle de 65 m de profondeur avec une acoustique extraordinaire : une voix chuchotée au fond résonne jusqu'à l'entrée.</p>
+        <p class="card-body" style="margin-top:0.5rem;">Prévoir 1h30–2h. Avec un départ à 8h30 de Santa Venerina, arrivée réaliste : 10h10–10h20. Les cars débarquent vers 10h30 — le décalage est minime, et le site reste beau même avec du monde. Si vraiment vous voulez le théâtre vide, il faudrait partir à 7h15 : à vous de voir le lendemain d'un jour d'arrivée. Dans tous les cas, <strong>achetez les billets en ligne la veille</strong> pour ne pas perdre 15 min à la caisse.</p>
+        <p class="card-detail">Viale Rizzo · Ouvert dès 9h · ~13€ · Parking sur place · <strong>Garé ici le matin, reprise voiture vers 12h15 direction Molo Sant'Antonio</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Marché di Ortigia</p>
+          <span class="tag tag-must">Immanquable · 10h–13h</span>
+        </div>
+        <p class="card-body">Le meilleur marché alimentaire de la Sicile orientale. Poissons posés sur la glace entourés de citrons — espadons en tranches épaisses, oursins ouverts, palourdes, crevettes rouges de Mazara. Épices en pyramides, olives marinées, ricotta fraîche à la louche, fromages, herbes. L'apogée est entre 10h30 et 12h. Ce n'est pas un marché pour touristes : les restaurateurs d'Ortigia s'approvisionnent ici le matin même.</p>
+        <p class="card-body" style="margin-top:0.5rem;">Ne rien acheter pour emporter à moins d'avoir de la glace — la chaleur fait son œuvre. Observer, goûter ce qu'on vous propose, photographier avec discrétion et respect. C'est le terrain de chasse de Roza-Mariia.</p>
+        <p class="card-detail">Via Emanuele De Benedictis / Piazza Cesare Battisti · Ortigia</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Fonte Aretusa — La fontaine Aréthuse</p>
+          <span class="tag tag-must">Immanquable</span>
+        </div>
+        <p class="card-body">Une source d'eau douce qui émerge directement au bord de la mer — depuis 2 700 ans. Un bassin bas cerné de papyrus (plante venue d'Égypte, naturalisée ici depuis l'Antiquité), des canards qui s'en fichent, et la mer Ionienne à 5 mètres. Endroit étrange, presque intime, coincé entre les immeubles et le front de mer. La légende : la nymphe Aréthuse, fuyant le dieu-fleuve Alphée amoureux, fut transformée en source par Artémis — et le fleuve traversa la Méditerranée sous les eaux pour la rejoindre. L'eau du bassin est légèrement saumâtre en période de forte mer.</p>
+        <p class="card-detail">Largo Aretusa · Accès libre · Ortigia</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Largo XXV Luglio — coucher de soleil</p>
+          <span class="tag tag-gold">19h30 · Ne pas rater</span>
+        </div>
+        <p class="card-body">La terrasse naturelle sur la pointe sud-ouest d'Ortigia. Vue plein ouest sur la mer ouverte et le port grande de Syracuse. En mai, le soleil descend vers 20h et peint le basalte blond de l'île en orange brûlé pendant 20 minutes. Spot connu — arriver à 19h30 pour trouver une bonne place. Tables de bar à proximité pour un dernier verre avant la route. C'est la conclusion naturelle de la journée Ortigia, avant la marche de retour vers le parking.</p>
+        <p class="card-detail">Pointe sud-ouest d'Ortigia · 15 min à pied depuis le centre · Accès libre</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       02 — CURIOSITÉS
+  ══════════════════════════════════════ -->
+  <section id="curiosites">
+    <div class="section-hd">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Curiosités <em>proches</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Duomo di Siracusa — le temple habité</p>
+          <span class="tag tag-sea">À ne pas louper</span>
+        </div>
+        <p class="card-body">La cathédrale d'Ortigia est un palimpseste architectural à nul autre pareil : elle a été construite à l'intérieur et autour du <strong>temple grec de Pallas Athéna</strong> (Ve siècle av. J.-C.). Les colonnes doriques du temple original sont encore debout, intégrées dans les murs de la nef — visibles depuis l'extérieur et depuis l'intérieur. Façade baroque XVIIe siècle, structures grecques de 2 500 ans derrière. On entre dans une des plus anciennes structures d'Europe en croyant visiter une église ordinaire.</p>
+        <p class="card-detail">Piazza del Duomo · Entrée libre ou symbolique · 20 min suffisent</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Temple d'Apollon — premier contact</p>
+          <span class="tag tag-anec">En passant</span>
+        </div>
+        <p class="card-body">Vous le verrez dès l'entrée dans Ortigia depuis les ponts — des colonnes doriques isolées dans un espace dégagé. Le plus ancien temple dorique de Sicile, VIe siècle av. J.-C. Ce qu'il en reste est modeste, mais c'est un marqueur temporel immédiat : 2 600 ans dans la première place que vous traversez. Il a été successivement temple grec, église byzantine, mosquée arabe, église normande. Toute l'histoire méditerranéenne en une ruine.</p>
+        <p class="card-detail">Piazza Pancali, entrée d'Ortigia · Accès libre</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Castello Maniace — la pointe de l'île</p>
+          <span class="tag tag-good">Si énergie après-midi</span>
+        </div>
+        <p class="card-body">Château construit par Frédéric II de Hohenstaufen au XIIIe siècle, à l'extrémité sud de l'île. Architecture militaire sévère, tours carrées, vue sur les deux ports de Syracuse. Peu de touristes n'arrivent jusqu'ici — la plupart s'arrêtent au Duomo. La marche depuis la Fontaine Aréthuse le long du front de mer est belle : 15 minutes de promenade sur les remparts face à la mer.</p>
+        <p class="card-detail">Piazza Federico di Svevia · ~4€ · Ouvert en matinée et début d'après-midi</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">L'Oreille de Denys — l'acoustique</p>
+          <span class="tag tag-anec">Expérience sonore</span>
+        </div>
+        <p class="card-body">Grotte artificielle de 65 m de long, en forme de S, taillée dans le calcaire par les esclaves de Denys Ier. Acoustique extraordinaire : un murmure chuchoté au fond de la grotte se répercute jusqu'à l'entrée avec une clarté troublante. La légende (sans doute apocryphe mais belle) dit que Denys faisait enfermer ses prisonniers ici pour espionner leurs conversations depuis l'ouverture au sommet. Le nom "Oreille de Denys" fut donné par le <strong>Caravage lors de sa visite à Syracuse en 1608</strong> — il était en fuite après son meurtre à Rome et se cachait sur l'île.</p>
+        <p class="card-detail">Inclus dans le billet du Parc de Neapolis · Faire le test acoustique — ça vaut le détour</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       03 — HISTOIRE
+  ══════════════════════════════════════ -->
+  <section id="histoire">
+    <div class="section-hd">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Un peu <em>d'histoire</em></h2>
+    </div>
+
+    <div class="history-block">
+      <p>Syracuse est probablement la ville la plus importante du monde grec antique après Athènes — et à certains moments de son histoire, plus puissante. Fondée en <strong>734 av. J.-C.</strong> par des colons corinthiens sur l'île d'Ortigia, elle est devenue une métropole de 300 000 habitants, la capitale de la Sicile grecque, une cité fortifiée, prospère, culturellement extraordinaire. Les tyrans de Syracuse commanditaient les plus grands poètes de Grèce. Pindare y venait chanter leurs victoires.</p>
+      <p>C'est ici que les Athéniens ont connu leur défaite la plus catastrophique : <strong>l'expédition de Sicile</strong> (415–413 av. J.-C.), envoyée par la démocratie athénienne pour prendre Syracuse, s'est terminée par la destruction quasi-complète de la flotte et la mort ou la captivité de 40 000 hommes. Les prisonniers furent enfermés dans les <em>latomies</em> — les carrières que vous verrez ce matin. Thucydide consacre à cet épisode les livres les plus brillants de son <em>Histoire de la Guerre du Péloponnèse</em>. C'est l'une des rares batailles de l'Antiquité dont les conséquences sur l'histoire du monde sont clairement traçables.</p>
+      <p><strong>Archimède</strong> est né à Syracuse vers 287 av. J.-C. Il y a passé sa vie — mathématiques, physique, ingénierie militaire. Il fut tué lors de la prise de la ville par les Romains en 212 av. J.-C., alors qu'il traçait des cercles géométriques dans le sable. Le général romain Marcellus avait donné l'ordre de l'épargner.</p>
+      <p>Ortigia, c'est le noyau originel — l'île choisie par les premiers colons parce qu'elle était naturellement défendable, avec un port protégé de chaque côté. Tout le reste de la ville a grandi depuis là pendant mille ans. Ce que vous marchez aujourd'hui, c'est la fondation de toute la suite.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       04 — CARNET PRATIQUE
+  ══════════════════════════════════════ -->
+  <section id="carnet">
+    <div class="section-hd">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Carnet <em>pratique</em></h2>
+    </div>
+
+    <!-- PARKING — critique, en premier -->
+    <div class="parking-box">
+      <p class="pb-eyebrow">Logistique · Impératif avant tout le reste</p>
+      <p class="pb-title">Parking Molo Sant'Antonio — la règle absolue</p>
+      <p class="pb-body">Garer la voiture <strong>avant les ponts</strong>, au Parking Molo Sant'Antonio. Il se trouve juste à l'entrée d'Ortigia côté continent, sur le front de mer nord. 24h/24, ~1,50€/h. Depuis là, tout Ortigia est à pied : 5 min pour le marché, 10 min pour la Fontaine Aréthuse, 15 min pour le Duomo.</p>
+      <p class="pb-body" style="margin-top:0.75rem;"><strong>Logistique du déplacement :</strong> Le matin, garez-vous au parking du Parc de Neapolis (sur place, gratuit). Vers 12h15, reprenez la voiture pour les 10 minutes de route jusqu'au Molo Sant'Antonio. Une fois garée là, n'y revenez qu'au moment du départ — en soirée après le dîner.</p>
+      <div class="pb-rule">
+        🚫 <strong>Ne jamais franchir les ponts vers Ortigia en voiture.</strong> ZTL permanente — caméras automatiques, amende directe sur le propriétaire du véhicule. Pas de panneau d'avertissement visible, pas de tolérance pour les étrangers. Suivre le GPS jusqu'au Molo Sant'Antonio, s'arrêter là, point.
+      </div>
+    </div>
+
+    <!-- MANGER -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🍽️</span> Où manger — Déjeuner Ortigia</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Fratelli Burgio</p>
+          <span class="tag tag-must">Immanquable · Déjeuner uniquement</span>
+        </div>
+        <p class="pcard-addr">Mercato di Ortigia, Via Emanuele De Benedictis · Ortigia</p>
+        <p class="pcard-body"><strong>C'est le déjeuner du séjour.</strong> Comptoir de marché en plein air, tagliere de charcuteries et fromages locaux (provola, caciocavallo, salumi), antipasti di mare frais du matin même, vins siciliens au verre — Etna blanc, Nero d'Avola. Tables debout ou assises selon disponibilité. Uniquement le jour — ferme en fin d'après-midi. C'est l'un des meilleurs rapports qualité/ambiance de toute la Sicile est. Prévoir 12h30–13h, ne pas arriver après 13h30.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Trattoria La Foglia</p>
+          <span class="tag tag-good">Plan B · Anti-touriste</span>
+        </div>
+        <p class="pcard-addr">Via Capodieci 29 · Ortigia</p>
+        <p class="pcard-body">Cuisine maison, prix corrects, ambiance sans chichis. Adresse locale, loin des axes touristiques principaux. Si Fratelli Burgio est plein ou si le groupe préfère être assis à table. Menu court, produits du jour.</p>
+      </div>
+
+      <div class="info-box">
+        <strong>Séquence conseillée :</strong> Neapolis ~10h15 → reprise voiture ~12h15 → Molo Sant'Antonio → marché 12h30 (flânerie) → Fratelli Burgio 12h45. Après déjeuner : Duomo, Fontaine Aréthuse, venelles d'Ortigia. Castello Maniace si énergie. Spritzzeria/Largo XXV Luglio ~19h30. Dîner ~20h30 sur place. Retour voiture ~22h, arrivée Santa Venerina ~23h30.
+      </div>
+    </div>
+
+    <!-- DÎNER -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🌙</span> Où dîner — Trois scénarios</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Casa Ranieri</p>
+          <span class="tag tag-must">Cible · À réserver</span>
+        </div>
+        <p class="pcard-addr">Piazza San Giuseppe 8 · Ortigia</p>
+        <p class="pcard-body">Fruits de mer, linguine all'inchiostro di seppia, produits de la pêche locale. L'adresse de référence pour un dîner soigné à Ortigia. <strong>Réservation indispensable</strong> — surtout un mardi de mai avec les touristes qui restent dormir sur l'île. La soirée idéale : coucher de soleil au Largo XXV Luglio à 19h30, table à 20h30. Retour voiture vers 22h, arrivée Santa Venerina ~23h30–minuit. Long, mais la route de nuit est fluide.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Le Vin de l'Assassin</p>
+          <span class="tag tag-good">Alternative qualitative</span>
+        </div>
+        <p class="pcard-addr">Via Roma · Ortigia</p>
+        <p class="pcard-body">Menu manuscrit, tables dehors dans la ruelle, lumière dorée le soir. Cuisine de saison, vins siciliens au verre, ambiance décontractée. Moins formel que Casa Ranieri, plus accessible. Belle soirée photo dans la ruelle éclairée. Réservation conseillée mais moins critique qu'un restaurant gastronomique.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Dîner à la maison — Santa Venerina</p>
+          <span class="tag tag-sea">Si groupe épuisé</span>
+        </div>
+        <p class="pcard-body">Si le groupe est à plat après le long trajet, la journée entière debout et la route de retour, c'est la bonne décision. Départ d'Ortigia après le coucher de soleil (~20h15), arrivée Airbnb ~22h, dîner simple avec les produits achetés J1. Pas un échec — une journée de cette intensité mérite parfois une soirée sans prise de décision supplémentaire.</p>
+      </div>
+    </div>
+
+    <!-- CAFÉ / VERRE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">☕</span> Café · Verre · Coucher de soleil</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Café au comptoir — Neapolis d'abord</p>
+          <span class="tag tag-sea">~10h15, avant d'entrer</span>
+        </div>
+        <p class="pcard-body">Avant d'entrer dans le parc, café dans le premier bar en face. Granita si dispo. Le bar de l'entrée du Neapolis sert souvent une bonne granita aux agrumes. C'est le rituel sicilien avant toute visite — pas en marchant, pas dans le parc, au comptoir, deux minutes.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Spritzzeria</p>
+          <span class="tag tag-gold">19h · Vue plein ouest</span>
+        </div>
+        <p class="pcard-addr">Largo XXV Luglio · Pointe sud-ouest d'Ortigia</p>
+        <p class="pcard-body">Apéritif avec vue plein ouest sur la mer. Le spot du coucher de soleil sur Ortigia — spritz, vins locaux, lumière dorée. Arriver vers 19h–19h15 pour avoir une place. C'est la charnière naturelle entre l'après-midi et le dîner : 45 min ici, puis à pied jusqu'à Casa Ranieri ou Le Vin de l'Assassin. Lumière parfaite pour Roza-Mariia depuis la terrasse dans les 20 min qui précèdent le coucher.</p>
+      </div>
+    </div>
+
+    <!-- TOILETTES -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🚽</span> Toilettes</p>
+
+      <div class="pcard">
+        <p class="pcard-body"><strong>Parc de Neapolis</strong> : toilettes publiques à l'entrée — les utiliser avant d'entrer. <strong>Ortigia</strong> : toilettes dans les bars et restaurants où vous consommez (Fratelli Burgio, buvette du marché). Il n'y a pas de toilettes publiques fiables dans les ruelles d'Ortigia — prévoir avant de s'éloigner du marché. Le trajet retour vers le parking (Molo Sant'Antonio, 10–15 min à pied) est le dernier passage fiable.</p>
+      </div>
+    </div>
+
+    <!-- NAUTIQUE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🤿</span> Activités nautiques</p>
+
+      <div class="pcard">
+        <p class="pcard-body"><strong>Pas de baignade J2.</strong> Vigilance vent toute la journée — mer agitée. Fontane Bianche (plage la plus proche, 20 min d'Ortigia) est une option par beau temps, pas un mardi de vigilance jaune. Garder Fontane Bianche comme option de repli une autre journée si un après-midi se libère. Pas de location nautique prévue ce jour.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       05 — VIGILANCE
+  ══════════════════════════════════════ -->
+  <section id="vigilance">
+    <div class="section-hd">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Points de <em>vigilance</em></h2>
+    </div>
+
+    <div class="vig-list">
+
+      <div class="vig-item warn">
+        <span class="vig-ico">🚫</span>
+        <div class="vig-content">
+          <p class="vig-head">ZTL Ortigia — amende automatique</p>
+          <p class="vig-body">Ortigia est une Zone à Trafic Limité permanente. Les ponts d'accès sont surveillés par des caméras automatiques. Toute voiture qui franchit un pont vers l'île reçoit une amende envoyée au propriétaire du véhicule. Aucune signalisation en amont ne prévient les touristes. Le Parking Molo Sant'Antonio est à 200 m des ponts — côté continent. S'y arrêter sans exception.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">⏰</span>
+        <div class="vig-content">
+          <p class="vig-head">Fratelli Burgio : uniquement le jour</p>
+          <p class="vig-body">C'est un comptoir de marché — il ferme en même temps que le marché, en début d'après-midi. Ne pas arriver après 13h30, ou trouver comptoir fermé et tables levées. Le créneau 12h30–13h15 est idéal : après la première vague, avant la fermeture.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🏛️</span>
+        <div class="vig-content">
+          <p class="vig-head">Neapolis : 9h idéal, 10h15 réaliste — choisir en connaissance</p>
+          <p class="vig-body">Avec un départ à 8h30 de Santa Venerina, arrivée à Neapolis vers 10h10–10h20 : les cars de tourisme sont déjà là. Pour avoir le théâtre vide, il faudrait partir à 7h00–7h15 — faisable, mais brutal le lendemain du J1. La décision se prend ce soir selon l'état du groupe. À noter : le site reste beau et vaut le détour même avec du monde — les latomies et l'Oreille de Denys ne souffrent pas de la foule de la même façon que le théâtre à ciel ouvert.</p>
+        </div>
+      </div>
+
+      <div class="vig-item sea-warn">
+        <span class="vig-ico">🎟️</span>
+        <div class="vig-content">
+          <p class="vig-head">Billet Neapolis — acheter en ligne la veille</p>
+          <p class="vig-body">En mai, les billets en ligne sont souvent disponibles mais la caisse physique peut avoir une queue le matin. Acheter sur le site du Parco Archeologico di Naxos-Taormina (qui gère aussi Neapolis) ou via l'appli VivaTicket la veille au soir. ~13€ par personne. Évite 15 min de file à l'entrée, qui se paye sur le temps de visite calme.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🌬️</span>
+        <div class="vig-content">
+          <p class="vig-head">Vent : protégés dans Ortigia, pas partout</p>
+          <p class="vig-body">Les venelles étroites d'Ortigia cassent le vent — c'est l'avantage de l'île pour une journée de vigilance jaune. En revanche : le front de mer nord (Lungomare di Levante) et la pointe Maniace peuvent être exposés. Le Largo XXV Luglio est sur la côte ouest, généralement moins venté en cas de siroco est. Prévoir une couche légère pour le coucher de soleil.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🕗</span>
+        <div class="vig-content">
+          <p class="vig-head">Retour tardif — anticiper si dîner à Ortigia</p>
+          <p class="vig-body">Sans dîner sur place : partir du parking à 20h15, arrivée Santa Venerina ~22h–22h15. Avec Casa Ranieri ou Le Vin de l'Assassin (~20h30–22h) : départ parking ~22h15, arrivée ~23h45–minuit. La route de nuit depuis Syracuse est fluide et sans surprise — mais c'est une longue journée. Prendre la décision du dîner avant de partir le matin, pas sur le trottoir à 20h après le coucher de soleil.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🍋</span>
+        <div class="vig-content">
+          <p class="vig-head">Au marché : ne rien acheter de fragile pour ramener</p>
+          <p class="vig-body">Le marché est tentant. Mais une ricotta ou des pâtisseries siciliennes achetées à 11h survivent mal à 8h de voiture et de chaleur. Si envie de ramener des produits du marché : épices, câpres, herbes sèches, sel aux herbes — tout ce qui ne craint pas. Les fromages affinés passent si la voiture a la clim. La ricotta fraîche : non.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">📷</span>
+        <div class="vig-content">
+          <p class="vig-head">Photographie au marché — discrétion</p>
+          <p class="vig-body">Le marché d'Ortigia est fréquenté par des gens qui travaillent, pas par des figurants. Photographier les étals : bienvenu. Photographier les vendeurs de près sans demander : beaucoup moins. "Posso fare una foto?" avec un sourire et un geste vers l'appareil — la réponse est presque toujours oui, et souvent accompagnée d'une mise en scène spontanée.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /main -->
+
+<footer>
+  Sicile · Costa ionica · Maggio 2026 · <em>J2 de 6</em> · Preparato con cura
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-a');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const target = document.querySelector(`.nav-a[href="#${entry.target.id}"]`);
+        if (target) target.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-5% 0px -88% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
