@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ce qu'on n'a pas fait — Sicile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C4622D;
+    --terra-dark: #8B3E18;
+    --gold: #D4A853;
+    --cream: #F7F0E3;
+    --parchment: #EDE3CC;
+    --dark: #2B1F14;
+    --olive: #5C6B3A;
+    --sea: #3A6B7A;
+    --text: #3D2B1A;
+    --muted: #6B5C4E;
+    --ok:   #3D6B45;
+    --maybe:#7A6B1A;
+    --no:   #6B2E2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 0%,  rgba(107,92,78,0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 110%,rgba(43,31,20,0.8)  0%, transparent 60%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+    opacity: 0.75;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.06;
+    margin-bottom: 0.6rem;
+  }
+  header h1 em { font-style: italic; color: var(--gold); opacity: 0.8; }
+  header p.intro {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    max-width: 560px;
+    line-height: 1.75;
+    margin-top: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-a {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.38;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-a:hover { opacity: 0.65; }
+  .nav-a.active { opacity: 1; border-bottom-color: var(--muted); color: var(--muted); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding: 1.75rem 0 0.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    opacity: 0.6;
+  }
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-ok    { background: var(--ok); }
+  .dot-maybe { background: var(--maybe); }
+  .dot-no    { background: var(--no); }
+
+  /* ── MANQUÉ CARD ── */
+  .manque-card {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem 1.6rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    margin-top: 2.5rem;
+    scroll-margin-top: 50px;
+    position: relative;
+  }
+
+  /* ── CARD HEADER ── */
+  .mc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .mc-titles { flex: 1; }
+  .mc-region {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+    margin-bottom: 0.35rem;
+  }
+  .mc-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.15;
+  }
+  .mc-name em { font-style: italic; color: var(--muted); }
+
+  /* ── RATTRAPABLE BADGE ── */
+  .badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+    flex-shrink: 0;
+  }
+  .badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 0.25rem;
+    align-self: flex-end;
+  }
+  .badge-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.3;
+    max-width: 110px;
+  }
+  .badge.ok    .badge-dot { background: var(--ok); }
+  .badge.ok    .badge-label { color: var(--ok); }
+  .badge.maybe .badge-dot { background: var(--maybe); }
+  .badge.maybe .badge-label { color: var(--maybe); }
+  .badge.no    .badge-dot { background: var(--no); }
+  .badge.no    .badge-label { color: var(--no); }
+
+  /* ── CARD BODY ROWS ── */
+  .mc-row {
+    margin-bottom: 1rem;
+  }
+  .mc-row:last-child { margin-bottom: 0; }
+  .mc-row-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.38;
+    margin-bottom: 0.35rem;
+  }
+  .mc-row-body {
+    font-size: 0.83rem;
+    line-height: 1.72;
+    opacity: 0.78;
+  }
+  .mc-row-body strong { font-weight: 500; color: var(--dark); opacity: 1; }
+  .mc-row-body em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05em;
+  }
+
+  /* ── RATTRAPABLE DETAIL BOX ── */
+  .ratt-box {
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    font-size: 0.79rem;
+    line-height: 1.65;
+    margin-top: 0.85rem;
+  }
+  .ratt-box.ok    { background: rgba(61,107,69,0.07);  color: var(--ok);    border-left: 3px solid var(--ok); }
+  .ratt-box.maybe { background: rgba(122,107,26,0.07); color: var(--maybe); border-left: 3px solid var(--maybe); }
+  .ratt-box.no    { background: rgba(107,46,46,0.07);  color: var(--no);    border-left: 3px solid var(--no); }
+  .ratt-box strong { font-weight: 500; }
+
+  /* ── PROCHAIN VOYAGE NOTE ── */
+  .next-trip {
+    background: var(--dark);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.75rem 2rem;
+    margin-top: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .next-trip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 0% 100%, rgba(196,98,45,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 100% 0%, rgba(212,168,83,0.1) 0%, transparent 55%);
+  }
+  .next-trip > * { position: relative; z-index: 1; }
+  .nt-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 0.65rem;
+  }
+  .nt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    line-height: 1.2;
+  }
+  .nt-title em { font-style: italic; color: var(--gold); }
+  .nt-body {
+    font-size: 0.83rem;
+    line-height: 1.78;
+    opacity: 0.65;
+  }
+  .nt-body strong { font-weight: 500; color: var(--cream); opacity: 1; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.73rem;
+    opacity: 0.55;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 2.5rem 1.25rem 2rem; }
+    .main { padding: 0 1.1rem 4rem; }
+    .next-trip { padding: 1.4rem 1.25rem; }
+    .mc-head { flex-direction: column; gap: 0.6rem; }
+    .badge { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .badge-label { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <span class="eyebrow">Sicile 2026 · 18–23 mai · Côte est</span>
+    <h1>Ce qu'on n'a<br><em>pas fait</em></h1>
+    <p class="intro">Six destinations qui n'ont pas tenu dans ce séjour. Pour chacune : ce qu'on rate vraiment, pourquoi c'était inévitable, et si quelque chose est encore récupérable sur le programme établi.</p>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     STICKY NAV
+══════════════════════════════════════ -->
+<nav class="sticky-nav" aria-label="Manqués">
+  <div class="nav-inner">
+    <a href="#alcantara"   class="nav-a active">Alcantara</a>
+    <a href="#catane"      class="nav-a">Catane</a>
+    <a href="#etna-sommet" class="nav-a">Etna sommet</a>
+    <a href="#ragusa"      class="nav-a">Ragusa Ibla</a>
+    <a href="#modica"      class="nav-a">Modica</a>
+    <a href="#cavagrande"  class="nav-a">Cavagrande</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- LÉGENDE -->
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot dot-ok"></span>Rattrapable sur ce séjour</div>
+    <div class="legend-item"><span class="legend-dot dot-maybe"></span>Rattrapable avec échange</div>
+    <div class="legend-item"><span class="legend-dot dot-no"></span>Prochain voyage</div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GORGES DE L'ALCANTARA
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="alcantara">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Nature · Côte ionienne nord</p>
+        <p class="mc-name">Gorges de <em>l'Alcantara</em></p>
+      </div>
+      <div class="badge ok">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Rattrapable J5 retour</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">La rivière Alcantara — née sur le flanc nord de l'Etna — a creusé sur des millénaires un canyon dans ses propres coulées de lave solidifiée. Résultat : des gorges de basalte noir aux parois en orgues géantes, avec une rivière d'eau froide et claire au fond. Le même processus géologique que les Faraglioni de J1, version canyon. Accessible depuis une terrasse panoramique en haut (vue spectaculaire, accès libre) ou en descendant dans les gorges à pied (400m de dénivelé, location de combinaisons sur place — l'eau est froide même en mai).</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">Les gorges sont à 20 min de Taormina — il était prévu en option de J5 retour. Mais J5 est déjà dense (théâtre, BamBar, déjeuner, Isola Bella), et le groupe sort de l'eau à 17h30. Ajouter 30 min de route + visite en fin d'après-midi après une longue journée, c'était risquer une visite trop vite faite. Sur les autres jours, le détour depuis Santa Venerina seul (50–65 min A/R) ne justifiait pas un créneau à part entière.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">Un des paysages géologiques les plus singuliers de Sicile. La vue depuis le belvédère supérieur est spectaculaire même sans descendre. La descente dans les gorges — eau froide, basalte noir, colonnes en hexagone — est une expérience physique à part entière. Difficile de combiner avec Taormina sans sacrifier quelque chose.</p>
+    </div>
+
+    <div class="ratt-box ok">
+      <strong>✓ Rattrapable J5 retour</strong> — En quittant Taormina après la remontée de la funivia (~17h30) et avant de reprendre la route vers Santa Venerina, un détour de 20 min vers l'Alcantara est faisable. Vue depuis le belvédère supérieur : 30 min, aucun équipement. Ne pas tenter la descente dans les gorges à cette heure — trop court, trop physique. À évaluer selon l'état du groupe en sortant d'Isola Bella.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CATANE
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="catane">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Ville · Plaine de Catane</p>
+        <p class="mc-name"><em>Catane</em> — la pescheria et le baroque noir</p>
+      </div>
+      <div class="badge maybe">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Rattrapable J6 matin si vol tardif</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">La deuxième ville de Sicile — vivante, bruyante, authentique. La <strong>pescheria</strong> (marché aux poissons, 7h–13h) est l'un des marchés les plus spectaculaires de Méditerranée : des espadons entiers posés sur des blocs de glace, des cris, des odeurs, des négociations. Pas un marché pour touristes — les restaurateurs de la région viennent s'approvisionner. En dehors du marché : cathédrale baroque en lave noire et calcaire blanc, Fontaine de l'éléphant (symbole de la ville), la Via Crociferi pour les façades. Pasticceria Savia (depuis 1897) pour les arancini les plus réputés de la ville.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">J1 : récupération voiture Centauro à 11h, pescheria qui ferme à 13h — incompatible sans voiture, impossible avec. J2–J5 : tous les matins sont occupés avec des départs vers des destinations lointaines. Le passage en voiture longe la périphérie de Catane via l'A18 sur plusieurs jours, sans jamais entrer dans le centre. La pescheria est le cœur de l'intérêt de Catane — la visiter après 13h n'a pas de sens.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">La pescheria est irremplaçable — pas de substitut dans la région. Le centre baroque de Catane (reconstruit après le tremblement de terre de 1693, comme Noto) mérite 2–3h de déambulation, mais sans la pescheria c'est moins urgent. <em>Me Cumpari Turiddu</em>, <em>A Putia Do Calabrisi</em> (déjeuner uniquement) — deux adresses qui n'auront pas été testées.</p>
+    </div>
+
+    <div class="ratt-box maybe">
+      <strong>△ Rattrapable J6 matin si le vol est ≥ 14h00</strong> — La pescheria ouvre à 7h. Avec un lever à 6h et un départ de l'Airbnb à 6h30, 1h30 de visite du marché est possible avant de reprendre la route vers l'aéroport (~45 min depuis Catane centre). Calcul serré mais jouable si le vol n'est pas matinal. Vérifier l'heure du vol et décider la veille au soir.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETNA SOMMITAL
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="etna-sommet">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Volcan · 3 300 m · Etna</p>
+        <p class="mc-name">Etna <em>sommital</em> — les cratères actifs</p>
+      </div>
+      <div class="badge no">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Prochain voyage</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">Au-dessus des Crateri Silvestri visités J3 (1 900 m) se trouve l'Etna réel — les cratères sommitaux en activité permanente à 3 300 m. Accès : téléphérique depuis le Rifugio Sapienza (1 900 m → 2 500 m), puis jeeps 4×4 jusqu'à 2 900 m, puis marche guidée obligatoire jusqu'aux bords des cratères actifs. Programme complet : 4–5h depuis le Rifugio, ~65€/personne (guides + jeeps + téléphérique). Fumeroles actives, odeur de soufre, lave chaude sous les semelles. La vue depuis 3 300 m par temps clair : toute la Sicile, la Calabre, parfois Malta.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">J3 était déjà une journée entière avec les Silvestri + Zafferana. La montée sommitale demande une journée dédiée avec un départ du Rifugio Sapienza dès 8h — ce qui implique un lever 6h depuis Santa Venerina. Aucun autre jour ne permet ce schéma : J1 arrivée, J2 Syracuse, J4 Noto (départ 8h00), J5 Taormina. Le coût (~260€ pour 4) et l'incertitude des conditions à 3 300 m (fermeture fréquente pour activité volcanique) rendaient la planification aléatoire.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">Une expérience radicalement différente des Silvestri. Les Crateri Silvestri sont des cônes adventifs dormants — impressionnants mais inertes. Les cratères sommitaux sont en activité permanente : fontaines de lave possibles, gaz soufrés, roche chaude. C'est la rencontre directe avec le volcan vivant. Difficile à apprécier correctement en une demi-journée ajoutée à autre chose — ça mérite un séjour dédié à l'Etna.</p>
+    </div>
+
+    <div class="ratt-box no">
+      <strong>✗ Non rattrapable sur ce séjour.</strong> Nécessite un départ du Rifugio dès 8h, donc une nuit sur place ou un lever 6h — aucun jour disponible dans le programme actuel. À intégrer comme journée centrale d'un prochain voyage Etna, idéalement avec une nuit au Rifugio Sapienza ou à Nicolosi.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       RAGUSA IBLA
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="ragusa">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Val di Noto · Baroque UNESCO</p>
+        <p class="mc-name">Ragusa <em>Ibla</em></p>
+      </div>
+      <div class="badge no">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Prochain voyage</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">Village baroque perché sur un éperon rocheux, classé UNESCO. La quintessence du baroque sicilien tardif — peut-être encore plus beau que Noto, différemment : Ragusa Ibla est un village habité qui vit, pas une rue-musée. Ruelles en pente, jardins cachés, <em>piazzetta</em> avec des vieux aux tables. La Piazza del Duomo en fin d'après-midi avec le Duomo di San Giorgio en contre-jour : une des plus belles places d'Italie. Restaurant <em>I Banchi</em> de Ciccio Sultano (menu 4 plats ~35€, à réserver) — l'adresse gastronomique du Val di Noto.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">J4 est déjà Noto + Vendicari — et le context file dit explicitement : <strong>"Ne pas ajouter Modica ou Ragusa Ibla sur la même journée."</strong> Ragusa Ibla est à 2h30–2h45 de Santa Venerina. Pour le faire bien — arriver le matin, déjeuner sur place, lumière du soir — c'est une journée entière. Impossible à combiner avec quoi que ce soit d'autre dans ce séjour.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">Probablement le village baroque le plus authentique de Sicile. Moins fréquenté que Noto (pas de bus directs depuis les aéroports), plus habité, plus vivant. La lumière du soir sur le Duomo di San Giorgio est une expérience photographique à part entière. <em>I Banchi</em> représente la meilleure table de ce voyage non faite.</p>
+    </div>
+
+    <div class="ratt-box no">
+      <strong>✗ Non rattrapable sur ce séjour.</strong> Le programme J4 est plein et l'ajout a été délibérément refusé pour protéger la journée. Prochain voyage : base dans le Val di Noto (Ragusa même, ou Scicli) avec une journée dédiée Ragusa Ibla + éventuellement Modica le même soir.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       MODICA
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="modica">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Val di Noto · Chocolat · Baroque</p>
+        <p class="mc-name"><em>Modica</em></p>
+      </div>
+      <div class="badge no">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Prochain voyage</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">Ville baroque construite en creux entre deux vallées — une ville en amphithéâtre naturel. Deux quartiers superposés reliés par un escalier monumental. La cathédrale San Giorgio (façade baroque à escalier) est l'une des plus spectaculaires de Sicile. Mais l'identité de Modica, c'est surtout le <strong>chocolat froid dit "à l'aztèque"</strong> : cacao pur + sucre + épices (cannelle, piment, vanille), sans lait ni beurre ni conchage. Recette transmise par les Espagnols depuis les Aztèques au XVIe siècle. Les artisans du Corso Umberto I (homonyme du Corso de Taormina) le font à la main, en tablette ou fondu chaud.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">Même logique que Ragusa — même distance (2h30), même impossibilité de combiner avec J4. Modica se visite bien en seconde moitié d'après-midi pour profiter de la lumière crépusculaire sur les deux quartiers, ce qui implique d'y être vers 17h — incompatible avec Vendicari qui mobilise jusqu'à 17h30.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">Le chocolat de Modica est une expérience sensorielle sans équivalent — sa texture granuleuse, sa froideur, son amertume épicée n'ont rien à voir avec le chocolat industriel ou artisanal européen. Difficile à comprendre sans le manger sur place, dans l'atelier où il est fait. La lumière du crépuscule sur les façades baroques est un bonus photographique réel.</p>
+    </div>
+
+    <div class="ratt-box no">
+      <strong>✗ Non rattrapable sur ce séjour.</strong> À combiner naturellement avec Ragusa Ibla lors d'un prochain voyage — les deux villes sont à 15 min l'une de l'autre. Modica l'après-midi, Ragusa Ibla le soir : une journée parfaite dans le Val di Noto.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CAVAGRANDE DEL CASSIBILE
+  ══════════════════════════════════════ -->
+  <div class="manque-card" id="cavagrande">
+    <div class="mc-head">
+      <div class="mc-titles">
+        <p class="mc-region">Nature · Province de Syracuse</p>
+        <p class="mc-name">Cavagrande <em>del Cassibile</em></p>
+      </div>
+      <div class="badge no">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Prochain voyage — accès à vérifier</span>
+      </div>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce que c'est</p>
+      <p class="mc-row-body">Des gorges spectaculaires creusées par la rivière Cassibile dans le calcaire blanc du plateau ibléen. Au fond : des piscines naturelles en cascade, eau turquoise froide, roches lisses. Une des rares plages fluviales véritablement sauvages de Sicile orientale — pas de parasols, pas d'infrastructure, juste l'eau et le canyon. La descente depuis le parking : 400 m de dénivelé, 50–60 min d'effort physique. La remontée : identique. C'est un engagement physique réel, pas une promenade.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Pourquoi écarté</p>
+      <p class="mc-row-body">Deux raisons cumulées. D'abord, <strong>des fermetures partielles répétées depuis 2019</strong> (sécurité, éboulements, gestion de la réserve) — le site est accessible certaines années, fermé d'autres, avec des restrictions qui changent en cours de saison. L'intégrer sans vérification préalable, c'était risquer un aller-retour à vide. Ensuite, la logistique : 1h45 de route depuis Santa Venerina, 2h de marche aller-retour dans les gorges, + temps sur place — c'est une journée entière à part entière, pas un ajout à J4.</p>
+    </div>
+
+    <div class="mc-row">
+      <p class="mc-row-label">Ce qu'on rate vraiment</p>
+      <p class="mc-row-body">Un paysage sans équivalent dans la région — des gorges calcaires blanches (très différentes du basalte noir de l'Etna et de l'Alcantara) avec des piscines naturelles en cascade. L'accès difficile protège le site de la foule estivale. En mai, l'eau est encore froide mais le site peu fréquenté — c'est la bonne fenêtre. C'est le manqué qui a le plus de caractère naturel unique dans cette liste.</p>
+    </div>
+
+    <div class="ratt-box no">
+      <strong>✗ Non rattrapable sur ce séjour.</strong> Et pour un futur voyage : <strong>vérifier impérativement l'état d'accès</strong> avant de l'intégrer (site Riserva Naturale Cavagrande del Cassibile, ou appeler la mairie de Avola). Ne pas se retrouver devant un portail fermé après 1h45 de route. À traiter comme journée dédiée, pas en complément d'une grosse journée Val di Noto.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NOTE PROCHAIN VOYAGE
+  ══════════════════════════════════════ -->
+  <div class="next-trip">
+    <p class="nt-eyebrow">Pour le prochain voyage</p>
+    <p class="nt-title">Ce que cette liste<br><em>dessine déjà</em></p>
+    <p class="nt-body">Ces six manqués ne sont pas des oublis — ce sont des choix. Un séjour de 5 nuits sur la côte est ne peut pas avaler aussi le Val di Noto profond, l'Etna sommital, et les gorges calcaires du sud. Ce que la liste dessine, c'est la structure d'un deuxième voyage : <strong>une base dans le Val di Noto</strong> (Ragusa, Scicli, ou Modica) pour Ragusa Ibla + Modica + Cavagrande del Cassibile en trois jours ; et <strong>une nuit sur l'Etna</strong> (Nicolosi ou Rifugio Sapienza) pour la montée sommitale au lever du jour. Catane — la pescheria — peut s'intercaler sur n'importe quel matin de transit si le vol le permet. L'Alcantara, lui, n'attendra pas le prochain voyage : J5 retour, si le groupe a encore les jambes.</p>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  Sicile · Costa ionica · Maggio 2026 · Ce qu'on garde pour la suite
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.manque-card[id]');
+  const navLinks = document.querySelectorAll('.nav-a');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const target = document.querySelector(`.nav-a[href="#${entry.target.id}"]`);
+        if (target) target.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-5% 0px -85% 0px' });
+
+  cards.forEach(c => io.observe(c));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
