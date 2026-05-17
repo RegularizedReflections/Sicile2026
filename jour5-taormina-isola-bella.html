@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jour 5 — Taormina · Isola Bella · Sicile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C4622D;
+    --terra-dark: #8B3E18;
+    --gold: #D4A853;
+    --gold-dark: #A07A28;
+    --cream: #F7F0E3;
+    --parchment: #EDE3CC;
+    --dark: #2B1F14;
+    --olive: #5C6B3A;
+    --sea: #3A6B7A;
+    --sea-dark: #2A4E59;
+    --text: #3D2B1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 3rem 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 0%,   rgba(212,168,83,0.4)  0%, transparent 50%),
+      radial-gradient(ellipse at 80% 110%, rgba(196,98,45,0.25)  0%, transparent 55%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 7vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    margin-bottom: 0.5rem;
+  }
+  header h1 em { font-style: italic; color: var(--gold); }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 1.4rem;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    opacity: 0.65;
+  }
+  .meta-pill .label { opacity: 0.55; }
+
+  /* ── GOLDEN DAY BANNER ── */
+  .golden-banner {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 0.9rem 1.75rem;
+  }
+  .golden-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .golden-ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .golden-text { font-size: 0.79rem; line-height: 1.62; opacity: 0.85; }
+  .golden-text strong { font-weight: 500; opacity: 1; }
+
+  /* ── BRIEF STRIP ── */
+  .brief-strip {
+    background: var(--gold-dark);
+    color: white;
+    padding: 1.1rem 1.75rem;
+  }
+  .brief-inner { max-width: 720px; margin: 0 auto; }
+  .brief-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.65rem;
+  }
+  .brief-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0;
+    align-items: center;
+  }
+  .brief-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.79rem;
+  }
+  .brief-step::after {
+    content: '›';
+    margin: 0 0.55rem;
+    opacity: 0.35;
+    font-size: 1rem;
+  }
+  .brief-step:last-child::after { display: none; }
+  .btime {
+    font-weight: 500;
+    background: rgba(255,255,255,0.2);
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(43,31,20,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.38;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-a:hover { opacity: 0.65; }
+  .nav-a.active { opacity: 1; border-bottom-color: var(--gold-dark); color: var(--gold-dark); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding-top: 3.75rem;
+    scroll-margin-top: 46px;
+  }
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--parchment);
+    margin-bottom: 1.75rem;
+  }
+  .sec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--gold-dark);
+    opacity: 0.22;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.12;
+  }
+  .sec-title em { font-style: italic; color: var(--terra); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tag-must  { background: rgba(196,98,45,0.11); color: var(--terra-dark);  border: 1px solid rgba(196,98,45,0.2); }
+  .tag-good  { background: rgba(92,107,58,0.1);  color: var(--olive);       border: 1px solid rgba(92,107,58,0.2); }
+  .tag-sea   { background: rgba(58,107,122,0.09); color: var(--sea);         border: 1px solid rgba(58,107,122,0.2); }
+  .tag-anec  { background: rgba(43,31,20,0.07);  color: var(--text);        border: 1px solid rgba(43,31,20,0.12); opacity: 0.7; }
+  .tag-gold  { background: rgba(212,168,83,0.15); color: var(--gold-dark);   border: 1px solid rgba(212,168,83,0.35); }
+  .tag-wine  { background: rgba(107,30,60,0.09); color: #6B1E3C;            border: 1px solid rgba(107,30,60,0.2); }
+
+  /* ── PLACE CARD ── */
+  .card-list { display: flex; flex-direction: column; gap: 1.1rem; }
+  .card {
+    background: white;
+    border-radius: 6px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 14px rgba(43,31,20,0.1); transform: translateY(-1px); }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+  }
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .card-body { font-size: 0.84rem; line-height: 1.72; opacity: 0.78; }
+  .card-detail { font-size: 0.72rem; margin-top: 0.55rem; opacity: 0.42; font-style: italic; }
+
+  /* ── HISTORY ── */
+  .history-block {
+    background: var(--dark);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.85rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .history-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 0%, rgba(212,168,83,0.2) 0%, transparent 55%),
+                radial-gradient(ellipse at 10% 100%, rgba(58,107,122,0.15) 0%, transparent 60%);
+  }
+  .history-block > * { position: relative; z-index: 1; }
+  .history-block p {
+    font-size: 0.87rem;
+    line-height: 1.88;
+    opacity: 0.82;
+    margin-bottom: 1.25rem;
+  }
+  .history-block p:last-child { margin-bottom: 0; }
+  .history-block strong { color: var(--gold); font-weight: 500; }
+  .history-block em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05em; }
+
+  /* ── PRACTICAL ── */
+  .prac-block { margin-bottom: 2.25rem; }
+  .prac-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .prac-title .ico { font-size: 1rem; opacity: 1; }
+
+  .pcard {
+    background: white;
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.07), 0 0 0 1px rgba(43,31,20,0.05);
+    margin-bottom: 0.8rem;
+  }
+  .pcard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+  .pcard-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .pcard-addr { font-size: 0.7rem; opacity: 0.4; font-style: italic; margin-bottom: 0.4rem; }
+  .pcard-body { font-size: 0.81rem; line-height: 1.68; opacity: 0.72; }
+  .pcard-body strong { font-weight: 500; color: var(--dark); opacity: 1; }
+
+  /* ── INFO / WARN BOXES ── */
+  .info-box {
+    background: rgba(160,122,40,0.07);
+    border-left: 3px solid var(--gold-dark);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--gold-dark);
+    margin-bottom: 0.8rem;
+  }
+  .info-box strong { font-weight: 500; }
+  .warn-box {
+    background: rgba(139,62,24,0.07);
+    border-left: 3px solid var(--terra);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--terra-dark);
+    margin-bottom: 0.8rem;
+  }
+  .warn-box strong { font-weight: 500; }
+  .sea-box {
+    background: rgba(58,107,122,0.07);
+    border-left: 3px solid var(--sea);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.81rem;
+    line-height: 1.68;
+    color: var(--sea-dark);
+    margin-bottom: 0.8rem;
+  }
+  .sea-box strong { font-weight: 500; }
+
+  /* ── PARKING BOX ── */
+  .parking-box {
+    background: var(--sea);
+    color: white;
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin: 0 0 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .parking-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(255,255,255,0.07) 0%, transparent 55%);
+  }
+  .parking-box > * { position: relative; z-index: 1; }
+  .pb-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+  .pb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+  .pb-body { font-size: 0.82rem; line-height: 1.68; opacity: 0.9; }
+  .pb-body strong { font-weight: 500; }
+  .pb-rule {
+    background: rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.78rem;
+    margin-top: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.92;
+  }
+
+  /* ── EVENING SCENARIOS ── */
+  .evening-box {
+    background: #2A1A28;
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .evening-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(107,30,60,0.4) 0%, transparent 55%),
+                radial-gradient(ellipse at 90% 100%, rgba(212,168,83,0.1) 0%, transparent 55%);
+  }
+  .evening-box > * { position: relative; z-index: 1; }
+  .ev-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 0.55rem;
+  }
+  .ev-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--gold);
+  }
+  .ev-option {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .ev-option:first-of-type { border-top: none; padding-top: 0; }
+  .ev-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(212,168,83,0.4);
+    flex-shrink: 0;
+    line-height: 1.1;
+    width: 1.4rem;
+  }
+  .ev-body { flex: 1; }
+  .ev-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--cream);
+  }
+  .ev-desc { font-size: 0.79rem; line-height: 1.65; opacity: 0.65; }
+
+  /* ── VIGILANCE ── */
+  .vig-list { display: flex; flex-direction: column; gap: 1rem; }
+  .vig-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.25rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(43,31,20,0.06), 0 0 0 1px rgba(43,31,20,0.04);
+  }
+  .vig-ico { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; width: 1.5rem; text-align: center; }
+  .vig-content { flex: 1; }
+  .vig-head { font-size: 0.85rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; line-height: 1.3; }
+  .vig-body { font-size: 0.8rem; line-height: 1.68; opacity: 0.65; }
+  .vig-item.warn { border-left: 3px solid var(--terra); border-radius: 0 6px 6px 0; }
+  .vig-item.warn .vig-head { color: var(--terra-dark); }
+  .vig-item.gold-warn { border-left: 3px solid var(--gold-dark); border-radius: 0 6px 6px 0; }
+  .vig-item.gold-warn .vig-head { color: var(--gold-dark); }
+  .vig-item.sea-warn { border-left: 3px solid var(--sea); border-radius: 0 6px 6px 0; }
+  .vig-item.sea-warn .vig-head { color: var(--sea-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.73rem;
+    opacity: 0.65;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 2.5rem 1.25rem 2rem; }
+    .brief-strip, .golden-banner { padding: 1rem 1.25rem; }
+    .main { padding: 0 1.1rem 4rem; }
+    .history-block, .parking-box, .evening-box { padding: 1.4rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <span class="eyebrow">Jour 5 · Vendredi 22 mai 2026 · Dernier grand jour</span>
+    <h1>Taormina<br><em>& Isola Bella</em></h1>
+    <div class="header-meta">
+      <div class="meta-pill">☀️ <span class="label">Météo ·</span> 22–24°C · Meilleure journée de la semaine</div>
+      <div class="meta-pill">🕗 <span class="label">Départ ·</span> 8h15 Santa Venerina</div>
+      <div class="meta-pill">🚗 <span class="label">Trajet ·</span> 45–60 min · Parking Porta Catania</div>
+      <div class="meta-pill">🌊 <span class="label">Mer ·</span> Calme · Snorkeling Isola Bella</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     GOLDEN DAY BANNER
+══════════════════════════════════════ -->
+<div class="golden-banner">
+  <div class="golden-inner">
+    <span class="golden-ico">✨</span>
+    <p class="golden-text"><strong>Meilleure fenêtre météo du séjour.</strong> 22–24°C à Taormina, mer calme, ciel dégagé. C'est le jour pour le théâtre grec avec vue sur l'Etna et la baignade à Isola Bella. Avant de partir ce soir depuis la Sicile orientale, la journée mérite son attention entière.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BRIEF STRIP
+══════════════════════════════════════ -->
+<div class="brief-strip">
+  <div class="brief-inner">
+    <p class="brief-eyebrow">Programme du jour</p>
+    <div class="brief-row">
+      <div class="brief-step"><span class="btime">8h15</span> Départ Santa Venerina</div>
+      <div class="brief-step"><span class="btime">~9h15</span> Parking Porta Catania</div>
+      <div class="brief-step"><span class="btime">9h15–9h35</span> Café · Corso vide · remontée à pied</div>
+      <div class="brief-step"><span class="btime">~9h35</span> Théâtre grec</div>
+      <div class="brief-step"><span class="btime">11h</span> BamBar · Corso Umberto</div>
+      <div class="brief-step"><span class="btime">13h</span> Déjeuner · Da Nino</div>
+      <div class="brief-step"><span class="btime">15h</span> Funivia (5 min à pied) → Isola Bella</div>
+      <div class="brief-step"><span class="btime">~17h30</span> Remontée · Taormina</div>
+      <div class="brief-step"><span class="btime">18h30</span> OstRossoDiVino ou retour</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STICKY NAV
+══════════════════════════════════════ -->
+<nav class="sticky-nav" aria-label="Sections">
+  <div class="nav-inner">
+    <a href="#incontournables" class="nav-a active">01 · Incontournables</a>
+    <a href="#curiosites"      class="nav-a">02 · Curiosités</a>
+    <a href="#histoire"        class="nav-a">03 · Histoire</a>
+    <a href="#carnet"          class="nav-a">04 · Carnet pratique</a>
+    <a href="#vigilance"       class="nav-a">05 · Vigilance</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════════
+       01 — INCONTOURNABLES
+  ══════════════════════════════════════ -->
+  <section id="incontournables">
+    <div class="section-hd">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">À voir <em>absolument</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Théâtre grec de Taormina</p>
+          <span class="tag tag-must">Immanquable · ~9h35</span>
+        </div>
+        <p class="card-body">Le théâtre grec le plus photographié du monde — et l'une des rares vues où une architecture antique, un volcan actif et la mer coexistent dans le même cadre. Les gradins taillés dans la roche au IIIe siècle av. J.-C. embrassent une vue complète sur l'Etna au nord-ouest et sur la mer Ionienne derrière la scène. En mai à 9h35, la lumière est encore rasante, l'ombre des colonnes longue, et les gradins quasi-vides. À 10h30, les cars arrivent. <strong>Ces 55 minutes sont la fenêtre.</strong></p>
+        <p class="card-body" style="margin-top:0.5rem;">Prévoir 1h30 sur site. Acheter les billets en ligne la veille — file d'attente évitée, temps sauvé à l'ouverture. Terrain de Roza-Mariia : colonnes en contre-jour, gradins vides, Etna fumant en arrière-plan.</p>
+        <p class="card-detail">Via del Teatro Greco · Ouvert dès 9h · ~13€ · Acheter en ligne la veille</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">BamBar — granita pistache légendaire</p>
+          <span class="tag tag-must">Immanquable · 11h</span>
+        </div>
+        <p class="card-body">L'adresse de référence absolue pour la granita à Taormina depuis des décennies. Granita pistache + brioche col tuppo : le standard est ici défini. File possible mais rapide — le service est efficace. Terrasse avec vue sur le Corso. À faire après le théâtre, avant le déjeuner — c'est la transition naturelle entre la visite intense et la balade. Commander debout au comptoir pour le prix sicilien, s'asseoir en terrasse si une table est libre.</p>
+        <p class="card-detail">Via Giovanni di Giovanni · Taormina centre · Ouvert tôt</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Isola Bella — baignade et snorkeling</p>
+          <span class="tag tag-must">Immanquable · 15h–17h30</span>
+        </div>
+        <p class="card-body">Petite île reliée à la côte par un tombolo de sable naturel — accessible à marée basse à pied, à marée haute par une barque ou à la nage. Eau d'une clarté exceptionnelle, fond rocheux et sableux, snorkeling excellent. Réserve naturelle depuis 1990 : on ne peut ni ancrer ni pêcher. L'accès à l'île elle-même coûte ~3€ (billet réserve). Depuis Taormina : téléphérique (funivia) depuis Piazzale Tondo jusqu'à la plage de Mazzarò — 4 min de descente, ~5€ aller-retour. En mai, les conditions de snorkeling sont idéales : eau à 18–20°C, visibilité 8–10 m.</p>
+        <p class="card-detail">Funivia depuis Piazzale Tondo · ~5€ AR · Île : ~3€ · Pas de loc. d'équipement sur place</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       02 — CURIOSITÉS
+  ══════════════════════════════════════ -->
+  <section id="curiosites">
+    <div class="section-hd">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Curiosités <em>proches</em></h2>
+    </div>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Corso Umberto + Belvedere</p>
+          <span class="tag tag-good">11h–12h30</span>
+        </div>
+        <p class="card-body">L'artère principale de Taormina — piétonne, commerçante, bordée de boutiques et de terrasses. La traverser de la Porta Catania (sud) à la Porta Messina (nord) prend 15 minutes, mais entre les arrêts, les détours dans les ruelles latérales et la terrasse du Belvedere (Piazza IX Aprile, vue sur l'Etna et le détroit de Messine), il faut plutôt compter 1h30. Le Belvedere de la Piazza IX Aprile est l'une des vues les plus immédiates de la ville — panorama à 180° sur la côte et l'Etna sans effort.</p>
+        <p class="card-detail">Accès libre · Corso entier en 15 min à pied · Piazza IX Aprile : le café/terrasse avec vue</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Castelmola — la vue 360° sur le détroit</p>
+          <span class="tag tag-anec">Option légère · +30 min</span>
+        </div>
+        <p class="card-body">Village perché au-dessus de Taormina, accessible en voiture (route sinueuse, 10 min) ou à pied depuis le théâtre grec (45 min de montée). Vue à 360° sur le détroit de Messine, la Calabre en face, l'Etna, et la côte ionienne. Spécialité locale : <em>vino alle mandorle</em> (vin aux amandes, doux, servi frais). À envisager uniquement si le groupe est frais après le théâtre, avant le déjeuner — pas après Isola Bella. Ne pas en faire une obligation.</p>
+        <p class="card-detail">10 min en voiture depuis le centre · Ou 45 min à pied · Uniquement si départ théâtre à 11h et énergie</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">TreQuarti Antipasteria</p>
+          <span class="tag tag-good">Alternative au déjeuner</span>
+        </div>
+        <p class="card-addr">Ruelle hors axes touristiques · Taormina</p>
+        <p class="card-body">Restaurant local hors des sentiers battus : rouleaux de thon, charcuteries, pâtes maison. Ambiance sans chichi, loin de la foule du Corso. Alternative crédible à Da Nino si préférence pour une adresse moins "institution" et plus confidentielle. Tailles de groupes : convient pour 4 personnes sans réservation un vendredi de mai.</p>
+        <p class="card-detail">Demander la localisation précise sur place · Chercher hors Corso Umberto</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <p class="card-name">Gorges de l'Alcantara — si trajet de retour</p>
+          <span class="tag tag-anec">Détour possible · 20 min</span>
+        </div>
+        <p class="card-body">Les gorges basaltiques de l'Alcantara sont à 20 min de Taormina vers l'intérieur des terres — colonnes de basalte noir dans une rivière d'eau froide, même processus géologique que les Faraglioni de J1 mais en version canyon. Site spectaculaire mais qui mérite sa propre demi-journée. Sur le trajet de retour vers Santa Venerina, si le groupe a encore de l'énergie après Isola Bella : arrêt de 30 min au bord. Pas plus — pour descendre dans les gorges et se baigner, il faut du temps et de l'équipement.</p>
+        <p class="card-detail">~20 min depuis Taormina · Bord des gorges : accès libre · Descente dans les gorges : ticket + équipement</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       03 — HISTOIRE
+  ══════════════════════════════════════ -->
+  <section id="histoire">
+    <div class="section-hd">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Un peu <em>d'histoire</em></h2>
+    </div>
+
+    <div class="history-block">
+      <p>Taormina — <em>Tauromenion</em> — a été fondée en <strong>392 av. J.-C.</strong> par des exilés de Naxos, la première colonie grecque de Sicile, après que Denys Ier de Syracuse (le même que vous avez croisé J2 à l'Oreille de Denys) eut détruit Naxos et dispersé ses habitants. Il y a une continuité entre vos deux journées culturelles. Le théâtre a été construit au IIIe siècle av. J.-C. et remanié massivement par les Romains — les arches de brique visibles sur les côtés sont romaines, les gradins originaux grecs. Les Romains ont creusé l'<em>orchestra</em> pour les combats de gladiateurs et les chasses aux bêtes sauvages (<em>venationes</em>).</p>
+      <p>Ce qui distingue ce théâtre de tous les autres : la <strong>vue</strong>. Le site a été choisi précisément pour cela — l'Etna et la mer Ionienne encadrés par les colonnes de la scène. Les Grecs construisaient leurs théâtres comme des observatoires autant que comme des lieux de spectacle. Voir les tragédies d'Euripide avec le volcan en fond de scène, c'était un effet délibéré. L'architecte inconnu qui a choisi cet emplacement savait ce qu'il faisait.</p>
+      <p><strong>Isola Bella</strong> était une propriété privée jusqu'à la fin du XXe siècle. Elle appartenait à <strong>Florence Trevelyan</strong>, une aristocrate anglaise exilée de la cour de la reine Victoria suite à une liaison scandaleuse, qui s'était installée à Taormina en 1881 et avait acheté l'île pour en faire un jardin d'agrément. Elle y a construit des pavillons, cultivé des plantes exotiques, élevé des oiseaux. À sa mort, le domaine est passé à la famille Bosurgi, puis a été racheté par la région sicilienne en 1990 pour en faire une réserve naturelle. Les pavillons de Trevelyan sont encore visibles sur l'île.</p>
+      <p>Taormina a été, entre 1860 et 1940, le terrain de villégiature préféré de l'Europe cultivée — Goethe, Nietzsche, D.H. Lawrence, Oscar Wilde, Truman Capote, et avant eux tous, le photographe allemand <strong>Wilhelm von Gloeden</strong>, dont les portraits de jeunes Siciliens dans des décors antiques ont influencé des décennies de photographie pictoraliste. La ville a une mémoire photographique longue.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       04 — CARNET PRATIQUE
+  ══════════════════════════════════════ -->
+  <section id="carnet">
+    <div class="section-hd">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Carnet <em>pratique</em></h2>
+    </div>
+
+    <!-- PARKING — critique -->
+    <div class="parking-box">
+      <p class="pb-eyebrow">Logistique · Deux stratégies selon la priorité</p>
+      <p class="pb-title">Porta Catania ou Lumbi — choisir ce soir</p>
+      <p class="pb-body"><strong>Porta Catania (Plan naturel depuis le sud, ~650 places)</strong> : bien balisé depuis l'A18. Mais attention à la géographie — le parking est à l'extrême sud de la ville, le théâtre grec à l'extrême nord. La marche sur le Corso jusqu'au théâtre prend <strong>15–20 minutes</strong>. Arrivée parking 9h15 → arrivée théâtre ~9h35. Ce n'est pas un problème : traverser le Corso Umberto à 9h15 quand il est encore vide, boutiques fermées, lumière oblique — c'est l'une des plus belles expériences de Taormina. Le café de la Piazza Vittorio Emanuele se prend en chemin.</p>
+      <p class="pb-body" style="margin-top:0.65rem;"><strong>Lumbi (Plan stratégique pour le théâtre, ~965 places)</strong> : situé côté nord, à 5 minutes du théâtre, de BamBar, de Da Nino et de la funivia. Navette gratuite vers le centre. Si l'objectif est d'être devant la billetterie à 9h20 pile — et non 9h35 — c'est le choix logique. Légèrement moins intuitif depuis le sud mais balisé.</p>
+      <div class="pb-rule">
+        🚫 <strong>Ne jamais chercher une place dans Taormina même.</strong> ZTL dans tout le centre historique — caméras automatiques, amendes immédiates. Ni pour "juste déposer". Porta Catania ou Lumbi, garer, ne plus bouger jusqu'au soir.
+      </div>
+    </div>
+
+    <!-- MANGER -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🍽️</span> Où manger — Déjeuner à Taormina</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Trattoria Da Nino</p>
+          <span class="tag tag-must">Premier choix · 13h</span>
+        </div>
+        <p class="pcard-addr">Via Luigi Pirandello · Taormina</p>
+        <p class="pcard-body">Institution de Taormina : vue ionienne depuis certaines tables, cuisine sicilienne classique, prix raisonnables pour la destination. Pâtes, poisson du jour, antipasti. Réservation conseillée pour 4 personnes — appeler la veille ou le matin même à l'ouverture. Ambiance animée mais sans la pressurisation des restaurants du Corso.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">TreQuarti Antipasteria</p>
+          <span class="tag tag-good">Alternative · Moins institutionnel</span>
+        </div>
+        <p class="pcard-body">Rouleaux de thon, charcuteries et fromages, pâtes maison. Ruelle hors Corso. Plus confidentiel, moins "carte postale". Convient si Da Nino est complet ou si le groupe veut une adresse moins fréquentée.</p>
+      </div>
+
+      <div class="info-box">
+        <strong>Séquence J5 :</strong> Parking ~9h15 → café Corso 9h15–9h35 → théâtre grec 9h35–11h → BamBar 11h → Corso + Belvedere 11h30 → Da Nino 13h → <strong>funivia à 5 min à pied depuis Da Nino</strong> (Via Luigi Pirandello = même rue) 15h → Isola Bella 15h15–17h30 → remontée téléphérique → OstRossoDiVino 18h30 ou retour voiture. La voiture ne bouge pas de toute la journée.
+      </div>
+    </div>
+
+    <!-- CAFÉ / GRANITA -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">☕</span> Café · Granita · Apéritif</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">BamBar</p>
+          <span class="tag tag-must">Arrêt obligatoire · 11h</span>
+        </div>
+        <p class="pcard-addr">Via Giovanni di Giovanni · Taormina</p>
+        <p class="pcard-body">La référence absolue pour la granita à Taormina. Granita pistache de Bronte + brioche col tuppo — c'est ici que ce standard est défini localement. File gérée rapidement. Compter 10–15 min. Si la terrasse est bondée : prendre au comptoir et manger en marchant vers le Corso. L'essentiel est la granita, pas la table.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Café en arrivant — Piazza Vittorio Emanuele</p>
+          <span class="tag tag-sea">9h15 · Premier arrêt · Début du Corso</span>
+        </div>
+        <p class="pcard-body">Premier café de la journée au comptoir dans un bar de la Piazza Vittorio Emanuele — la première grande place après Porta Catania, au bas du Corso. Le théâtre est à 15 min à pied vers le nord : le café s'intègre naturellement dans la montée. Espresso serré. Corso encore vide à cette heure, commerçants qui ouvrent les volets, lumière rasante — c'est le Taormina que les cars de tourisme ne verront jamais.</p>
+      </div>
+    </div>
+
+    <!-- ISOLA BELLA LOGISTIQUE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🤿</span> Isola Bella — logistique complète</p>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Téléphérique (funivia) depuis Taormina</p>
+          <span class="tag tag-sea">15h · Piazzale Tondo</span>
+        </div>
+        <p class="pcard-body">La funivia part depuis Piazzale Tondo (centro di Taormina, accessible à pied depuis le Corso en 5 min). Descend jusqu'à la plage de Mazzarò / Isola Bella en 4 minutes. ~5€ aller-retour par personne. File possible à 15h — rarement longue un vendredi de mai. Depuis le bas : 5 min à pied jusqu'à l'Isola Bella et sa bande de sable. <strong>Arriver avant 15h30</strong> pour profiter de la lumière de l'après-midi sur l'eau.</p>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <p class="pcard-name">Isola Bella — sur l'île</p>
+          <span class="tag tag-must">3€ · Réserve naturelle</span>
+        </div>
+        <p class="pcard-body">Billet d'entrée à la réserve naturelle (~3€) pour accéder à l'île par la bande de sable. Eau cristalline, fond mixte sable/roche, snorkeling excellent si palmes/masque disponibles (pas de location sur place — équipement perso uniquement). Les pavillons de Florence Trevelyan sont visibles sur l'île — végétation exotique, terrasses. Prévoir 1h30–2h. La remontée en téléphérique après 17h30 est fluide.</p>
+      </div>
+
+      <div class="sea-box">
+        <strong>Snorkeling :</strong> apporter palmes et masque si vous en avez — pas de location sur l'île ni sur la plage de Mazzarò. L'eau à 18–20°C en mai nécessite une combinaison ou une résistance au froid : 30 min dans l'eau maximum sans combinaison. Les fonds rocheux autour de l'île abritent des sérioles, pageots, et étoiles de mer.
+      </div>
+    </div>
+
+    <!-- SOIRÉE -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🌙</span> Soirée — trois scénarios</p>
+
+      <div class="evening-box">
+        <p class="ev-eyebrow">Décider avant de partir le matin</p>
+        <p class="ev-title">OstRossoDiVino, dîner alternatif, ou route</p>
+
+        <div class="ev-option">
+          <span class="ev-num">1</span>
+          <div class="ev-body">
+            <p class="ev-name">OstRossoDiVino — cible · À réserver impérativement</p>
+            <p class="ev-desc">Vico De Spuches 8, Taormina. Vins Etna au verre — Nerello Mascalese, Carricante, petits producteurs. Concerts certains vendredis soirs. La meilleure façon de terminer le séjour sur la côte est de la Sicile. <strong>Réservation obligatoire</strong> — à faire depuis J1 ou J2, pas le soir même. Si réservé : dîner ~20h, retour voiture ~22h, arrivée Santa Venerina ~23h. Préparer les valises avant de partir le matin.</p>
+          </div>
+        </div>
+
+        <div class="ev-option">
+          <span class="ev-num">2</span>
+          <div class="ev-body">
+            <p class="ev-name">Da Nino le soir — si non fait au déjeuner</p>
+            <p class="ev-desc">Si Da Nino n'était pas disponible au déjeuner, le soir est une option. Ou Trattoria di Concettina, ou toute adresse avec vue ionienne en terrasse. Moins emblématique qu'OstRossoDiVino pour un dernier soir, mais solide. Départ retour ~21h, arrivée ~22h15.</p>
+          </div>
+        </div>
+
+        <div class="ev-option">
+          <span class="ev-num">3</span>
+          <div class="ev-body">
+            <p class="ev-name">Retour direct après Isola Bella — J6 oblige</p>
+            <p class="ev-desc">J6 est le départ — vol retour, rendu voiture, dernières affaires. Si le groupe préfère rentrer à l'Airbnb vers 19h30–20h, dîner à la maison, et faire les valises sereinement : c'est une décision raisonnable. La journée aura été complète. Pas une déception — une priorité.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOILETTES -->
+    <div class="prac-block">
+      <p class="prac-title"><span class="ico">🚽</span> Toilettes</p>
+      <div class="pcard">
+        <p class="pcard-body"><strong>Théâtre grec</strong> : toilettes à l'entrée — les utiliser avant d'entrer sur site. <strong>Taormina centre</strong> : dans les bars et restaurants. <strong>Isola Bella / Mazzarò</strong> : toilettes au pied de la funivia et dans les bars de plage de Mazzarò. Sur l'île elle-même : aucune installation. Prévoir avant de prendre le bateau ou traverser la bande de sable.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       05 — VIGILANCE
+  ══════════════════════════════════════ -->
+  <section id="vigilance">
+    <div class="section-hd">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Points de <em>vigilance</em></h2>
+    </div>
+
+    <div class="vig-list">
+
+      <div class="vig-item gold-warn">
+        <span class="vig-ico">🎟️</span>
+        <div class="vig-content">
+          <p class="vig-head">Théâtre grec : billets en ligne ce soir — pas demain matin</p>
+          <p class="vig-body">La caisse physique à l'ouverture peut avoir une file de 15–20 min qui mange directement sur la fenêtre de lumière. Acheter sur le site du Parco Naxos-Taormina ou via VivaTicket ce soir. ~13€ par personne. Le QR code scanné en 10 secondes à l'entrée. Gagné : la fenêtre 9h20–10h30 entière.</p>
+        </div>
+      </div>
+
+      <div class="vig-item warn">
+        <span class="vig-ico">🍷</span>
+        <div class="vig-content">
+          <p class="vig-head">OstRossoDiVino : réserver depuis J1 ou J2 — message déjà prêt</p>
+          <p class="vig-body">Un vendredi soir à Taormina en mai : les bonnes adresses sont prises. Le message de réservation en italien ("Vorrei prenotare un tavolo per 4 persone per la cena di venerdì 22 maggio…") est à envoyer par WhatsApp ou SMS dès le lundi ou mardi — le créneau J2 à Ortigia est idéal. Ne pas se retrouver à 18h30 devant la porte fermée après la meilleure journée du séjour.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🅿️</span>
+        <div class="vig-content">
+          <p class="vig-head">Parking — Porta Catania puis ne plus bouger</p>
+          <p class="vig-body">Garer à Porta Catania à l'arrivée (9h15) et ne plus toucher à la voiture jusqu'au soir. Pour Isola Bella : téléphérique depuis Piazzale Tondo (à pied depuis le Corso, 5 min). Ne pas reprendre la voiture pour aller à la plage — le téléphérique est fait pour ça. Ne jamais entrer en voiture dans le centre historique.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🚡</span>
+        <div class="vig-content">
+          <p class="vig-head">Funivia — file à 15h, gérable · Alternative à pied</p>
+          <p class="vig-body">Le téléphérique à 15h un vendredi de mai : possible petite file, rarement longue (5–10 min). Si la file semble excessive, alternative : descendre à pied par le sentier depuis la Porta Catania vers Mazzarò (~20 min, dénivelé ~200 m). Prévoir chaussures décentes. La remontée à pied en fin d'après-midi avec des affaires mouillées est physique — préférer la funivia pour le retour dans tous les cas.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">📷</span>
+        <div class="vig-content">
+          <p class="vig-head">Fenêtre lumière théâtre — 9h35 à 10h30 maximum</p>
+          <p class="vig-body">La lumière rasante du matin sur les colonnes et les gradins vides est irremplaçable. BamBar et le Corso ne bougent pas — le théâtre à 9h35 oui. Si un imprévu retarde l'arrivée (parking, circulation), le théâtre reste la priorité absolue de la matinée. Tout peut se décaler sauf ça. Alternative si on veut être à 9h20 pile : viser le parking Lumbi (côté nord, 5 min du théâtre) au lieu de Porta Catania.</p>
+        </div>
+      </div>
+
+      <div class="vig-item sea-warn">
+        <span class="vig-ico">🧳</span>
+        <div class="vig-content">
+          <p class="vig-head">J6 est demain — préparer les valises ce soir</p>
+          <p class="vig-body">J6 : lever, rendu voiture à Catane, vol retour. Trajet CTA depuis Santa Venerina : 45–55 min. Prévoir 2h avant le décollage minimum. Ce soir avant de dormir : valises fermées, documents et clés de voiture sortis, plein d'essence si la voiture Centauro le requiert. Ne pas laisser ça pour 6h du matin.</p>
+        </div>
+      </div>
+
+      <div class="vig-item">
+        <span class="vig-ico">🌊</span>
+        <div class="vig-content">
+          <p class="vig-head">Isola Bella — arriver avant 15h30</p>
+          <p class="vig-body">L'après-midi à Isola Bella est calme en mai — pas la foule d'août. Mais arriver après 16h raccourcit significativement le temps sur l'île avant la fermeture du site et la remontée. Cible : téléphérique à 15h, île à 15h15. Même si le déjeuner s'est prolongé, maintenir cette heure cible.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /main -->
+
+<footer>
+  Sicile · Taormina · Maggio 2026 · <em>J5 de 6</em> · Ultimo grande giorno · Preparato con cura
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-a');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const target = document.querySelector(`.nav-a[href="#${entry.target.id}"]`);
+        if (target) target.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-5% 0px -88% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
